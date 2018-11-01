@@ -118,8 +118,8 @@ To demonstrate the concept, let’s modify our `StudentSorter` by introducing a 
 __Using this approach, we can override the natural ordering:__
 
 ```
-StudentNumberComparator StudentComparator = new StudentNumberComparator();
-Collections.sort(group, StudentComparator);
+StudentNumberComparator studentComparator = new StudentNumberComparator();
+Collections.sort(group, studentComparator);
 ```
 Now, let’s run our StudentNumberSorter to see the result:
 
@@ -129,18 +129,99 @@ After Sorting by number : [Park, John, Moon]
 ```
 If we want a different sorting order, we only need to change the `Comparator` we’re using:
 ```
-StudentYearComparator StudentComparator = new StudentYearComparator();
-Collections.sort(group, StudentComparator);
+StudentYearComparator studentComparator = new StudentYearComparator();
+Collections.sort(group, studentComparator);
 ```
 Now, when we run our StudentYearSorter, we can see a different sort order by Year:
 
 Before Sorting : [John, Moon, Park]
 After Sorting by year : [Moon, John, park]
 
+### 4.3 Simplifying Comparator Code by using _anonymous object_
 
+The following two lines of code can be simplified if `studentComparator` is used only once.
 
+```
+StudentNumberComparator studentComparator = new StudentNumberComparator();
+Collections.sort(group, studentComparator);
+```
+Since `studentComparator` object is used once, we can use __anonymous object.__
 
-## 5. Comparator Vs Comparable
+```
+Collections.sort(group, new StudentNumberComparator());
+```
+
+## 5. Comparator Using a static object defined in the class.
+
+Sometimes creating many extra classes would not be desirable. Maybe it is a burden to maintain them separate (helper) classes.
+
+In your class definition, alternatively, you may provide some different `Comparator` objects that already implemented `compare` methods as needed.
+
+The following code shows how it creates a static object called studentNumberComparator using an anonymous class that is implemented in Student class.
+
+```  
+public class Student {
+    private String name;
+    private int number;
+
+    private int year;
+
+    // constructor
+    // getters, setters  
+
+    @override
+    public String toString() {
+      return name;
+    }
+
+    // Create a static object called studentNumberComparator
+  	public static Comparator<Student> studentNumberComparator = new Comparator<Student>() {
+  		@Override
+  		public int compare(Student a, Student b) {
+  			return a.getNumber() - b.getNumber();
+  		}
+  	};
+
+}
+```
+
+Then, you simply invoke the `sort` method with the static object.
+
+```
+Collections.sort(group, Student.studentNumberComparator);
+```
+
+## 6. Comparator Using anonymous inner class directly
+
+The Comparators can be coded in the place where you need directly using `anonymous inner class`.
+
+The following static object, `studentNumberComparator`, can be replaced with the code that instantiates the object.
+
+```
+Collections.sort(group, Student.studentNumberComparator);
+```
+
+```
+// Create a static object called studentNumberComparator
+public static Comparator<Student> studentNumberComparator = new Comparator<Student>() {
+  @Override
+  public int compare(Student a, Student b) {
+    return a.getNumber() - b.getNumber();
+  }
+};
+```
+Combining two code snippets above, the sort call becomes shown below:
+
+```
+Collections.sort(group, new Comparator<Student>() {
+          @Override
+          public int compare(Student a, Student b) {
+            return a.getNumber() - b.getNumber();
+          }
+});
+```
+
+## 7. Comparator Vs Comparable
 The `Comparable` interface is a good choice when used for defining the default ordering or, in other words, if it’s the main way of comparing objects.
 
 Then, we must ask ourselves why use a `Comparator` if we already have Comparable?
