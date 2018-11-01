@@ -90,7 +90,7 @@ To create a `Comparator`, we have to implement the `Comparator` interface.
 In our first example, we’ll create a `Comparator` to use the `number` attribute of Student to sort the students:
 
 ```
-public class StudentNumberComparator implements Comparator<Student> {
+class StudentNumberComparator implements Comparator<Student> {
     @Override
     public int compare(Student firstStudent, Student secondStudent) {
        return (firstStudent.getNumber() - secondStudent.getNumber());
@@ -101,7 +101,7 @@ public class StudentNumberComparator implements Comparator<Student> {
 Similarly, we can create a `Comparator` to use the `year` attribute of `Student` to sort the students:
 
 ```
-public class StudentYearComparator implements Comparator<Student> {
+class StudentYearComparator implements Comparator<Student> {
     @Override
     public int compare(Student firstStudent, Student secondStudent) {
        return (firstStudent.getYear() - secondStudent.getYear());
