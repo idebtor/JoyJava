@@ -1,5 +1,5 @@
 
-# Comparator with Lambda Expression in Jave 8
+# Comparator with Lambda Expression in Java 8
 -------------------
 
 Overview
@@ -83,10 +83,11 @@ Using this Lambda expression you may write _forEach_ loop as shown below;
 group.forEach( (s) -> System.out.println(s) );
 ```
 ------------------------
-## 4. Lab assignment
+# Lab assignment - Part 2
 
 Review this __Comparator with Lambda expression__ lesson and add the following two sorts and test them.  
-	- Use a lambda expression to sort the group by their student names.
-	- Use a lambda expression to sort the group by their student name lengths.
-	- Name this file, StudentLambda.java
+	- Use a lambda expression to sort the group by each instance variable.
+	- Use a lambda expression to sort the group by the student name length.
+	- Add this part of code at the end of StudentDriver.java
+	
 ----------------
