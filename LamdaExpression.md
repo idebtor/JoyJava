@@ -69,16 +69,15 @@ public static void main(String[] args) {
 
 ## 3. Sort with Lambda Expression
 
-Since the `Collection.sort()` method knows that it should have a Comparator object which has a compare method, now it allows leave out all unnecessary things.  Based the code snippet above, what the sort() needs to have parameters and the statement in the body of compare().
-Believe it or not, it works even without the type such as <Student> since it understands what it is supposed to be there.  
+Since the Java compiler knows that `Collection.sort()` method requires a `Comparator` object that implements with a `compare` method, now it allows leave out all unnecessary things.  Based the code snippet above, what the `Collection.sort()` needs to have parameters and the statement in the body of `compare()`.  Believe it or not, the compiler works even without the type such as `<Student>` since it even understands what it is supposed to be there.  
 
 ```
 Collections.sort(group, (a, b) -> a.getID() - b.getID());
 ```
 
-In this case the compiler understands that the object must be an instance of Comparator<Student>. So, for the compiler to understand lambda expression, the interface contain exactly one abstract method. Such an interface is known as a functional interface or a Single Abstract Method(SAM) interface.
+In this case the compiler understands that the object must be an instance of `Comparator<Student>`. So, for the compiler to understand lambda expression, the interface contain exactly one abstract method. Such an interface is known as a __functional interface__ or a __Single Abstract Method(SAM) interface__.
 
-Using this Lambda expression you may write forEach loop as shown below;
+Using this Lambda expression you may write _forEach_ loop as shown below;
 
 ```
 group.forEach( (s) -> System.out.println(s) );
@@ -86,7 +85,8 @@ group.forEach( (s) -> System.out.println(s) );
 ------------------------
 ## 4. Lab assignment
 
-1. Go through the Comparable and Comparator Interface lesson and this Lambda expression.  Implement the code and test them by yourself.
-2. Use a lambda expression to sort the group by their student names.
-3. Use a lambda expression to sort the group by their student name lengths.
+Review this __Comparator with Lambda expression__ lesson and add the following two sorts and test them.  
+	- Use a lambda expression to sort the group by their student names.
+	- Use a lambda expression to sort the group by their student name lengths.
+	- Name this file, StudentLambda.java
 ----------------

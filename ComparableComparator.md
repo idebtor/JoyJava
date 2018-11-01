@@ -13,7 +13,11 @@ We’ll start by creating a simple _Student_ class:
 ```  
     public class Student {
         private String name;
+<<<<<<< HEAD
         private int ID;
+=======
+        private int number;
+>>>>>>> 801b27cd21372721e7280e196d60f663fbdeaf47
         private int year;
 
         // constructor
