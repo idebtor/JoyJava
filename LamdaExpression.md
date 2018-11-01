@@ -8,14 +8,14 @@ In Java 8, the Lambda expression has been introduced. It is very useful and powe
 -----------
 
 ## 1. Setting up an Example
-Let’s take an example of a student group in a group – where we want to line up the students by their student numbers.
+Let’s take an example of a student group in a group – where we want to line up the students by their student IDs.
 
 We’ll start by creating a simple _Student_ class:
 
 ```  
     public class Student {
         private String name;
-        private int number;
+        private int ID;
         private int year;
 
         // constructor
@@ -34,14 +34,14 @@ We’ll start by creating a simple _Student_ class:
 Before Java 8, sorting a collection would involve __creating an anonymous inner class__ for the `Comparator` used in the sort:
 
 ```
-System.out.println("Before Sorting by num : " + group);
+System.out.println("Before Sorting by ID : " + group);
 Collections.sort(group, new Comparator<Student>() {
       @Override
       public int compare(Student a, Student b) {
-        return a.getNumber() - b.getNumber();
+        return a.getID() - b.getID();
       }
 });
-System.out.println("After Sorting : " + group);
+System.out.println("After  Sorting : " + group);
 ```
 
 This would simply be used to sort the List of Student entities:
@@ -56,14 +56,14 @@ public static void main(String[] args) {
     group.add(Student2);
     group.add(Student3);
 
-    System.out.println("Before Sorting by num : " + group);
+    System.out.println("Before Sorting by ID : " + group);
     Collections.sort(group, new Comparator<Student>() {
           @Override
           public int compare(Student a, Student b) {
-            return a.getNumber() - b.getNumber();
+            return a.getID() - b.getID();
           }
     });
-    System.out.println("After Sorting : " + group);
+    System.out.println("After  Sorting : " + group);
 }
 ```
 
@@ -73,7 +73,7 @@ Since the `Collection.sort()` method knows that it should have a Comparator obje
 Believe it or not, it works even without the type such as <Student> since it understands what it is supposed to be there.  
 
 ```
-Collections.sort(group, (a, b) -> a.getNumber() - b.getNumber());
+Collections.sort(group, (a, b) -> a.getID() - b.getID());
 ```
 
 In this case the compiler understands that the object must be an instance of Comparator<Student>. So, for the compiler to understand lambda expression, the interface contain exactly one abstract method. Such an interface is known as a functional interface or a Single Abstract Method(SAM) interface.
