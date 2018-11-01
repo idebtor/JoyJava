@@ -243,5 +243,6 @@ Then, we must ask ourselves why use a `Comparator` if we already have Comparable
 
 There are several reasons why:
 
+<<<<<<< HEAD
 Sometimes, we can’t modify the source code of the class whose objects we want to sort, thus making the use of `Comparable` impossible. Using `Comparators` allows us to avoid adding additional code to our domain classes
 We can define multiple different comparison strategies which isn’t possible when using Comparable.
