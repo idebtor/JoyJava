@@ -20,7 +20,7 @@ We’ll start by creating a simple _Student_ class:
         // constructor
         // getters, setters  
 
-        @override
+        @Override
         public String toString() {
           return name;
         }
@@ -32,9 +32,9 @@ Next, let’s create a `StudentSorter` class to create our collection and make a
 ```
 public static void main(String[] args) {
     List<Student> group = new ArrayList<>();
-    Student Student1 = new Student(32, "John", 1);
-    Student Student2 = new Student(42, "Moon", 3);
-    Student Student3 = new Student(21, "Park", 4);
+    Student Student1 = new Student("John", 32, 1);
+    Student Student2 = new Student("Moon", 42, 3);
+    Student Student3 = new Student("Park", 21, 4);
     group.add(Student1);
     group.add(Student2);
     group.add(Student3);
