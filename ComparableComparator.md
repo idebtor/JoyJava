@@ -72,8 +72,10 @@ The method returns a number indicating whether the object being compared is less
 
 Finally, when we run our `StudentSorter` now, we can see our `Students` sorted by their number:
 
+```
 Before Sorting : [John, Moon, Park]
 After Sorting : [Park, John, Moon]
+```
 
 Now that we have a clear understanding of natural ordering with `Comparable`, let’s see __how we can use other types of ordering, in a more flexible manner__ than directly implementing an interface.
 
@@ -127,15 +129,19 @@ Now, let’s run our StudentNumberSorter to see the result:
 Before Sorting : [John, Moon, Park]
 After Sorting by number : [Park, John, Moon]
 ```
+
 If we want a different sorting order, we only need to change the `Comparator` we’re using:
+
 ```
 StudentYearComparator studentComparator = new StudentYearComparator();
 Collections.sort(group, studentComparator);
 ```
 Now, when we run our StudentYearSorter, we can see a different sort order by Year:
 
+```
 Before Sorting : [John, Moon, Park]
 After Sorting by year : [Moon, John, park]
+```
 
 ### 4.3 Simplifying Comparator Code by using _anonymous object_
 
