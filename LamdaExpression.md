@@ -91,6 +91,10 @@ Review this __Comparator with Lambda expression__ lesson and add the following t
 	- Use a lambda expression to sort the group by the student name length.
 	- Add this part of code at the end of StudentDriver.java
 	
+## Files to submit:
+	- Student.java
+	- StudentDriver.java  <--- (Original + Part2) Code
+	
 ----------------
 # Lab Part 1 & Part 2 Sample Run: 
 ```
