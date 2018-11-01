@@ -241,10 +241,9 @@ There are several reasons why:
 
 Sometimes, we can’t modify the source code of the class whose objects we want to sort, thus making the use of `Comparable` impossible. Using `Comparators` allows us to avoid adding additional code to our domain classes. We can define multiple different comparison strategies which isn’t possible when using Comparable.
 
-# Lab Assignment
-Review through the __Comparable and Comparator Interface__ lesson.  Implement the code and test them by yourself such that it works with StudentDriver.java.
+# Lab Assignment - Part 1
+Review through the __Comparable and Comparator Interface__ lesson.  Implement the code in `Student.java` such that it works with `StudentDriver.java`.
 
-    - Comparable interface uses the student number for comparison.
-    - Comparator interfaces use every one of instance variables. You have to implement three classes for that and three static class variables. 
-    - Basically, your Student.java should work with StudentDriver.java.
+    - Comparable interface uses the student ID for comparison. This is a default comparsion, so-called natural ordering.
+    - Comparator interfaces use every one of instance variables. You have to implement four Comparator classes for each class variables and a Comparator class which compares objects for the length of name. 
     
