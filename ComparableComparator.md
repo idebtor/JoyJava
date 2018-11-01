@@ -14,7 +14,6 @@ We’ll start by creating a simple _Student_ class:
     public class Student {
         private String name;
         private int number;
-
         private int year;
 
         // constructor
@@ -244,3 +243,11 @@ Sometimes, we can’t modify the source code of the class whose objects we want 
 Using `Comparators` allows us to avoid adding additional code to our domain classes
 We can define multiple different comparison strategies which isn’t possible when using Comparable
 
+# Lab Assignment
+Review through the __Comparable and Comparator Interface__ lesson.  
+
+	- Implement the code and test them by yourself with the 
+    - Comparable interface uses the student number for comparison.
+    - Comparator interfaces use every one of instance variables. You have to implement three classes for that and three static class variables. 
+    - Basically, your Student.java should work with StudentDriver.java.
+    
