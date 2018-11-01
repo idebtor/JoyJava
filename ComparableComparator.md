@@ -6,17 +6,24 @@
 When an array or list can be sorted or searched since they have the built-in capability. We say that its elements are comparable (due to the implementation of the Comparable interface). The question, with objects whose classes do not implement the Comparable interface, can be sorted or searched? In this case you need to provide a Comparator or Comparable interface which is the rule for sorting objects.
 
 ## 2. Setting up an Example
-Let’s take an example of a stduent group – where we want to line up the students by their student numbers.
+Let’s take an example of a student group in a group – where we want to line up the students by their student numbers.
 
 We’ll start by creating a simple _Student_ class:
 
 ```  
     public class Student {
-        private int number;
         private String name;
+        private int number;
+
         private int year;
 
-        // constructor, getters, setters  
+        // constructor
+        // getters, setters  
+
+        @override
+        public String toString() {
+          return name;
+        }
     }
 ```
 
@@ -24,17 +31,17 @@ Next, let’s create a `StudentSorter` class to create our collection and make a
 
 ```
 public static void main(String[] args) {
-    List<Student> class = new ArrayList<>();
+    List<Student> group = new ArrayList<>();
     Student Student1 = new Student(32, "John", 1);
     Student Student2 = new Student(42, "Moon", 3);
     Student Student3 = new Student(21, "Park", 4);
-    class.add(Student1);
-    class.add(Student2);
-    class.add(Student3);
+    group.add(Student1);
+    group.add(Student2);
+    group.add(Student3);
 
-    System.out.println("Before Sorting : " + class);
-    Collections.sort(class);
-    System.out.println("After Sorting : " + class);
+    System.out.println("Before Sorting : " + group);
+    Collections.sort(group);
+    System.out.println("After Sorting : " + group);
 ```
 Here, as expected, this results in a compile-time error:
 
@@ -89,13 +96,13 @@ public class StudentNumberComparator implements Comparator<Student> {
 }
 ```
 
-Similarly, we can create a `Comparator` to use the `age` attribute of `Student` to sort the students:
+Similarly, we can create a `Comparator` to use the `year` attribute of `Student` to sort the students:
 
 ```
-public class StudentAgeComparator implements Comparator<Student> {
+public class StudentYearComparator implements Comparator<Student> {
     @Override
     public int compare(Student firstStudent, Student secondStudent) {
-       return (firstStudent.getAge() - secondStudent.getAge());
+       return (firstStudent.getYear() - secondStudent.getYear());
     }
 }
 ```
@@ -108,9 +115,38 @@ It is left for you as a lab or homework.
 
 To demonstrate the concept, let’s modify our `StudentSorter` by introducing a second argument to the `Collections.sort` method which is actually the instance of Comparator we want to use.
 
-Using this approach, we can override the natural ordering:
+__Using this approach, we can override the natural ordering:__
 
 ```
-StudentRankingComparator StudentComparator = new StudentRankingComparator();
-Collections.sort(footballTeam, StudentComparator);
+StudentNumberComparator StudentComparator = new StudentNumberComparator();
+Collections.sort(group, StudentComparator);
 ```
+Now, let’s run our StudentNumberSorter to see the result:
+
+```
+Before Sorting : [John, Moon, Park]
+After Sorting by number : [Park, John, Moon]
+```
+If we want a different sorting order, we only need to change the `Comparator` we’re using:
+```
+StudentYearComparator StudentComparator = new StudentYearComparator();
+Collections.sort(group, StudentComparator);
+```
+Now, when we run our StudentYearSorter, we can see a different sort order by Year:
+
+Before Sorting : [John, Moon, Park]
+After Sorting by year : [Moon, John, park]
+
+
+
+
+## 5. Comparator Vs Comparable
+The `Comparable` interface is a good choice when used for defining the default ordering or, in other words, if it’s the main way of comparing objects.
+
+Then, we must ask ourselves why use a `Comparator` if we already have Comparable?
+
+There are several reasons why:
+
+Sometimes, we can’t modify the source code of the class whose objects we want to sort, thus making the use of `Comparable` impossible
+Using `Comparators` allows us to avoid adding additional code to our domain classes
+We can define multiple different comparison strategies which isn’t possible when using Comparable
