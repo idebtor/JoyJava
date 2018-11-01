@@ -120,8 +120,8 @@ To demonstrate the concept, let’s modify our `StudentSorter` by introducing a 
 __Using this approach, we can override the natural ordering:__
 
 ```
-StudentNumberComparator studentComparator = new StudentNumberComparator();
-Collections.sort(group, studentComparator);
+StudentNumberComparator studentComparator1 = new StudentNumberComparator();
+Collections.sort(group, studentComparator1);
 ```
 Now, let’s run our StudentNumberSorter to see the result:
 
@@ -133,8 +133,8 @@ After Sorting by number : [Park, John, Moon]
 If we want a different sorting order, we only need to change the `Comparator` we’re using:
 
 ```
-StudentYearComparator studentComparator = new StudentYearComparator();
-Collections.sort(group, studentComparator);
+StudentYearComparator studentComparator2 = new StudentYearComparator();
+Collections.sort(group, studentComparator2);
 ```
 Now, when we run our StudentYearSorter, we can see a different sort order by Year:
 
@@ -148,8 +148,8 @@ After Sorting by year : [Moon, John, park]
 The following two lines of code can be simplified if `studentComparator` is used only once.
 
 ```
-StudentNumberComparator studentComparator = new StudentNumberComparator();
-Collections.sort(group, studentComparator);
+StudentNumberComparator studentComparator3 = new StudentNumberComparator();
+Collections.sort(group, studentComparator3);
 ```
 Since `studentComparator` object is used once, we can use __anonymous object.__
 
@@ -227,6 +227,12 @@ Collections.sort(group, new Comparator<Student>() {
 });
 ```
 
+## 8.  Comparator Using Lambda expression in Java 8
+
+This simplifies a lot of work we have done in this section. I strongly recommend that you continue on the next lesson.
+[Comparator with Lambda Expression in Jave 8]()
+
+
 ## 7. Comparator Vs Comparable
 The `Comparable` interface is a good choice when used for defining the default ordering or, in other words, if it’s the main way of comparing objects.
 
@@ -237,3 +243,4 @@ There are several reasons why:
 Sometimes, we can’t modify the source code of the class whose objects we want to sort, thus making the use of `Comparable` impossible
 Using `Comparators` allows us to avoid adding additional code to our domain classes
 We can define multiple different comparison strategies which isn’t possible when using Comparable
+
