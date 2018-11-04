@@ -87,13 +87,13 @@ group.forEach( (s) -> System.out.println(s) );
 
 Review this __Comparator with Lambda expression__ lesson and add the following two sorts and test them.  
 
-	- Use a lambda expression to sort the group by each instance variable.
-	- Use a lambda expression to sort the group by the student name length.
-	- Add this part of code at the end of StudentDriver.java
+- Use a lambda expression to sort the group by each instance variable.
+- Use a lambda expression to sort the group by the student name length.
+- Add this part of code at the end of StudentDriver.java
 	
 ## Files to submit:
-	- Student.java
-	- StudentDriver.java  <--- (Original + Part2) Code
+- Student.java
+- StudentDriver.java  <--- (Original + Part2) Code
 	
 ----------------
 # Lab Part 1 & Part 2 Sample Run: 
