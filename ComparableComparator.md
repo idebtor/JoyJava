@@ -244,6 +244,10 @@ Sometimes, we can’t modify the source code of the class whose objects we want 
 # Lab Assignment - Part 1
 Review through the __Comparable and Comparator Interface__ lesson.  Implement the code in `Student.java` such that it works with `StudentDriver.java`.
 
-    - Comparable interface uses the student ID for comparison. This is a default comparsion, so-called natural ordering.
-    - Comparator interfaces use every one of instance variables. You have to implement four Comparator classes for each class variables and a Comparator class which compares objects for the length of name. 
+    - Comparable interface uses the student ID for comparison. 
+      This is a default comparsion, so-called natural ordering.
+    - Comparator interfaces use every one of instance variables. 
+      You have to implement four Comparator classes for each 
+      class variables and a Comparator class which compares 
+      objects for the length of name. 
     
