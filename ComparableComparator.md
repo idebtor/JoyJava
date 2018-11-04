@@ -99,17 +99,11 @@ class StudentIDComparator implements Comparator<Student> {
 
 Similarly, we can create a `Comparator` to use the `year` attribute of `Student` to sort the students:
 
-```
-class StudentYearComparator implements Comparator<Student> {
-    @Override
-    public int compare(Student firstStudent, Student secondStudent) {
-       return (firstStudent.getYear() - secondStudent.getYear());
-    }
-}
-```
 How about the 'name' attribute of `Student`?
 
 It is left for you as a lab or homework.
+
+Place these Comparator class definitions in Part 1 : `StudentDriver.java`.
 
 
 ### 4.2 Comparators in Action
@@ -162,7 +156,7 @@ Sometimes creating many extra classes would not be desirable. Maybe it is a burd
 
 In your class definition, alternatively, you may provide some different `Comparator` objects that already implemented `compare` methods as needed.
 
-The following code shows how it creates a static object called studentIDComparator using an anonymous class that is implemented in Student class.
+The following code shows how it creates a static object called `tudentIDComparator` using an anonymous class that is implemented in Student class.
 
 ```  
 public class Student {
@@ -239,11 +233,12 @@ Then, we must ask ourselves why use a `Comparator` if we already have Comparable
 
 There are several reasons why:
 
-Sometimes, we can’t modify the source code of the class whose objects we want to sort, thus making the use of `Comparable` impossible. Using `Comparators` allows us to avoid adding additional code to our domain classes. We can define multiple different comparison strategies which isn’t possible when using Comparable.
+Sometimes, we can’t modify the source code of the class whose objects we want to sort, thus making the use of `Comparable` impossible. Using `Comparators` allows us to avoid adding additional code to our domain classes. We can define multiple different comparison strategies which isn’t possible when using `Comparable`.
 
 # Lab Assignment - Part 1
-Review through the __Comparable and Comparator Interface__ lesson.  Implement the code in `Student.java` such that it works with `StudentDriver.java`.
+Review through the __Comparable and Comparator Interface__ lesson.  Implement the code in `Student.java` such that it works with `StudentDriver.java`. Complete StudentDriver coding that satisfy the following specifications.
 
 - Comparable interface uses the student ID for comparison. This is a default comparsion, so-called natural ordering.
-- Comparator interfaces use every one of instance variables. You have to implement four Comparator classes for each class variables and a Comparator class which compares objects for the length of name. 
+- Comparator interfaces use every one of instance variables. You have to implement __four Comparator classes__ for each class variables and include a Comparator class which compares objects for the length of name. 
+- Add the definitions of four Comparator classes in `StudentDriver.java` provided with this Lab. There will be a penalty of -1 point for this violation. Why? 
     
