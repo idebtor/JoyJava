@@ -93,7 +93,7 @@ Review this __Comparator with Lambda expression__ lesson and add the following t
 	
 ## Files to submit:
 - Student.java
-- StudentDriver.java  <--- (Original + Part2) Code
+- StudentDriver.java     <--- (Original Code given + Your Part2 Code)
 	
 ----------------
 # Lab Part 1 & Part 2 Sample Run: 
