@@ -156,7 +156,7 @@ Sometimes creating many extra classes would not be desirable. Maybe it is a burd
 
 In your class definition, alternatively, you may provide some different `Comparator` objects that already implemented `compare` methods as needed.
 
-The following code shows how it creates a static object called `tudentIDComparator` using an anonymous class that is implemented in Student class.
+The following code shows how it creates a static object called `studentIDComparator` using an anonymous class that is implemented in Student class.
 
 ```  
 public class Student {
