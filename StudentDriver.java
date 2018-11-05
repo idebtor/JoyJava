@@ -64,7 +64,7 @@ public class StudentDriver {
 	    System.out.println("After  Sorting by name : " + group);
 	    
 	    
-	    System.out.println("\n============= Part 2 ===========");
+	    System.out.println("\n====== Part 2 : Lambda expression =====");
 
 	    System.out.println("\n--Using Lambda expression");
 	    System.out.println("Before Sorting by ID : " + group);
@@ -84,3 +84,7 @@ public class StudentDriver {
 	    System.out.println("After  Sorting by str len: " + group);
 	}
 }
+
+
+// ===== Part 1 : Comparator class definitions =============
+
