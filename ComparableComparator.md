@@ -80,7 +80,7 @@ Now that we have a clear understanding of natural ordering with `Comparable`, le
 
 ## 4. Comparator interface
 
-The `Comparator` __interface defines a compare(arg1, arg2) method__ with two arguments which represent compared objects and works similarly to the `Comparable.compareTo()` method.
+The `Comparator` __interface defines a compare(arg1, arg2) method__ with two arguments which represent compared objects and works similarly to the `Comparable.compareTo()` method.  If the users of `Student` class may not be satisfied with the comparison provided by the class, then they can create their own customized comparisons through __Comparator interface__.  
 
 ### 4.1 Creating Comparators
 
@@ -103,7 +103,7 @@ How about the 'name' attribute of `Student`?
 
 It is left for you as a lab or homework.
 
-Place these Comparator class definitions in Part 1 : `StudentDriver.java`.
+Add these Comparator class definitions in `StudentDriver.java`, not in `Student.java`
 
 
 ### 4.2 Comparators in Action
@@ -152,7 +152,7 @@ Collections.sort(group, new StudentIDComparator());
 
 ## 5. Comparator Using a static object defined in the class.
 
-Sometimes creating many extra classes would not be desirable. Maybe it is a burden to maintain them separate (helper) classes.
+Sometimes creating many extra classes would not be desirable. Maybe it is a burden to maintain them separate (helper) classes. The developer of the class Student may offer this kind of capability from the beginning. 
 
 In your class definition, alternatively, you may provide some different `Comparator` objects that already implemented `compare` methods as needed.
 
