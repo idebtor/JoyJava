@@ -49,18 +49,13 @@ public class StudentDriver {
 	    Collections.sort(group, new Comparator<Student>() {
 	          @Override
 	          public int compare(Student a, Student b) {
-	            return a.getYear() - b.getYear();
+	            return 0;  ///////// your code here //////////
 	          }
 	    });
 	    System.out.println("After  Sorting by year : " + group);
 	    
 	    System.out.println("Before Sorting by name : " + group);
-	    Collections.sort(group, new Comparator<Student>() {
-	          @Override
-	          public int compare(Student a, Student b) {
-	            return a.getName().compareTo(b.getName());
-	          }
-	    });
+
 	    System.out.println("After  Sorting by name : " + group);
 	    
 	    
