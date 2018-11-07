@@ -12,7 +12,8 @@ Review through the __Comparable and Comparator Interface__ lesson.  Implement so
 
 #### Specifications:
 - Shape class has just one instance variable: 
-	`private java.util.Date time;             // time stamp `
+
+	```private java.util.Date time;             // time stamp ```
 	
 - When you compare two time stamps, use the natural ordering of `Date` class since it must provide `Comparable` interface.
 
