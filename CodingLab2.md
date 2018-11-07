@@ -10,10 +10,20 @@ JoyJava Lecture Notes and Code Snippets
 ## Lab Assignment - 
 Review through the __Comparable and Comparator Interface__ lesson.  Implement some classes such that they work with `ShapeDriver.java`. Complete `ShapeDriver.java` coding such that it produces the sample run shown below: 
 
-#### Hints:
-- Shape class has one intance variable: `private java.util.Date created;`
-- You may make a good use of Eclipse <source> <generate> menu to generate some of obivous code.
+#### Specifications:
+- Shape class has just one instance variable: 
+	`private java.util.Date time;             // time stamp `
+	
+- When you compare two time stamps, use the natural ordering of `Date` class since it must provide `Comparable` interface.
 
+- Use SimpleDateFormat("mm:ss") method to get the simple format of the time in `toString()` method.  
+	```
+		SimpleDateFormat df = new SimpleDateFormat("mm:ss");
+	```
+- Use `int` for all numerical compuations. For example, `PI` is defined as 3 and `getArea()` returns an `int` value.
+
+- You may make a good use of Eclipse <source> <generate> menu to generate some of obivous code.
+	
 ## Files to submit:
 - Shape.java, Point.java, Sqaure.java, Circle.java, Triangle.java
 - ShapeDriver.java     <--- (Original Code given + Your code added)
