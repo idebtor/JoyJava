@@ -8,7 +8,7 @@ JoyJava Lecture Notes and Code Snippets
 # Comparable and Comparator Interfaces
 -------------------------------------------------------------------
 ## Lab Assignment - Part 1
-Review through the __Comparable and Comparator Interface__ lesson.  Implement some classes such that they work with `ShapeDriver.java`. Complete StudentDriver coding such that it produces the sample run shown below: 
+Review through the __Comparable and Comparator Interface__ lesson.  Implement some classes such that they work with `ShapeDriver.java`. Complete `StudentDriver.java` coding such that it produces the sample run shown below: 
 
 ## Files to submit:
 - Shape.java, Point.java, Sqaure.java, Circle.java, Triangle.java
