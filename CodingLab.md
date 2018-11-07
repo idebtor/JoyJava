@@ -6,9 +6,15 @@ JoyJava Lecture Notes and Code Snippets
 
 # Java Lecture Note: Interface
 # Comparable and Comparator Interfaces
-
 -------------------------------------------------------------------
-# Lab assignment - Part 2
+## Lab Assignment - Part 1
+Review through the __Comparable and Comparator Interface__ lesson.  Implement the code in `Student.java` such that it works with `StudentDriver.java`. Complete StudentDriver coding that satisfy the following specifications.
+
+- Comparable interface uses the student ID for comparison. This is a default comparsion, so-called natural ordering.
+- Comparator interfaces use every one of instance variables. You have to implement __four Comparator classes__ for three instance variables and additionally one for comparing objects for the length of name. 
+- Add the definitions of `four` Comparator classes in `StudentDriver.java` provided with this Lab. There will be a penalty of -2 points for this violation. Why? 
+
+## Lab assignment - Part 2
 
 Review this __Comparator with Lambda expression__ lesson and add the following two sorts and test them.  
 
@@ -21,7 +27,7 @@ Review this __Comparator with Lambda expression__ lesson and add the following t
 - StudentDriver.java     <--- (Original Code given + Your Part 1 & 2 Code)
 	
 ----------------
-# Lab Part 1 & Part 2 Sample Run: 
+## Lab Part 1 & Part 2 Sample Run: 
 ```
 --Using Comparable interface
 Before Comparable Sorting : [John32-4, Johny11-1, Moonkey42-3, Parker21-4]
@@ -59,6 +65,3 @@ After  Sorting by str len: [John32-4, Johny11-1, Parker21-4, Moonkey42-3]
 ```
 
 
-
-## Lab ShapeDriver.java
-   Create some classes to run ShapeDriver.java and to get its results as shown 
