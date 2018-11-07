@@ -23,7 +23,7 @@ Review through the __Comparable and Comparator Interface__ lesson.  Implement so
 	```
 - Use `int` for all numerical compuations. For example, `PI` is defined as 3 and `getArea()` returns an `int` value.
 
-- You may make a good use of Eclipse <source> <generate> menu to generate some of obivous code.
+- You may make a good use of Eclipse `Source` `Generate` menu to generate some of obivous code.
 	
 ## Files to submit:
 - Shape.java, Point.java, Sqaure.java, Circle.java, Triangle.java
