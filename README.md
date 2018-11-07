@@ -10,5 +10,7 @@ JoyJava Lecture Notes and Code Snippets
 	
 2. Follow CodingLab 1 & 2 instructions.
 3. Use Piazaa to turn in your files.
+
 Blessings
+
 (a debtor)<><
