@@ -98,6 +98,21 @@ The above code, like the `Dog` example, still creates an instance of anonymous i
 
 It is very important to note about anonymous inner classes which can __either implement an interface or extend a class__, they can't do both at the same time. There is no such mechanism by which an anonymous inner class can implement multiple interfaces. An anonymous inner class can't even extend a class and implement an interface at the same time.
 
+## Conclusion
+
+In the following code, we are not instantiating an instance of Comparator interface. 
+
+```	
+	public static Comparator<Vehicle> sortByCapa = new Comparator<Vehicle>() {
+		@Override
+		public int compare(Vehicle o1, Vehicle o2) {
+			return o1.getCapacity() - o2.getCapacity();
+		}
+	}; 
+```
+
+Through the code above, an object called sortByCapa is instantiated by an anonymous inner class that implements Comparator interface. By the way, you may invoke  `this.getClass().getName()` inside compare() method to print the anonymous class name which ends with a dollar sign with a number such as ~$1.
+
 
 ## References
 - [Java Anonymous Inner Class by Example](http://cs-fundamentals.com/java-programming/java-anonymous-inner-classes.php)
