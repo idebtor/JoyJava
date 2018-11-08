@@ -25,7 +25,7 @@ Review through the __Comparable and Comparator Interface__ lesson.  Implement so
 	```
 		SimpleDateFormat df = new SimpleDateFormat("mm:ss");   // df.format(this.time) 
 	```
-- Use `int` for all numerical compuations. 
+- Use `int` for all numerical computations. 
 	For example, `PI` is defined as 3 and `getArea()` returns an `int` value. 
 
 - You may make a good use of Eclipse `Source` `Generate` menu to generate some of obivous code.
