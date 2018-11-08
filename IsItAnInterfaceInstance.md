@@ -93,7 +93,7 @@ interface Manageable {
 ```
 The above code, like the `Dog` example, still creates an instance of anonymous inner class, but this time the new just-in-time class is an implementer of the `Manageable` interface. You would have also noticed the unusual but perfectly valid syntax `Manageable m = new Manageable() {`, where `Manageable` is an interface rather than a non-abstract class type. The code looks like instantiating a `Manageable` object but that is not so. It is creating an instance of a new, anonymous implementer of `Manageable`.
 
-It is very important to note about anonymous inner classes that anonymous inner classes can either implement an interface or extend a class, they can't do both at the same time. There is no such mechanism by which an anonymous inner class can implement multiple interfaces. An anonymous inner class can't even extend a class and implement an interface at the same time.
+It is very important to note about anonymous inner classes which can __either implement an interface or extend a class__, they can't do both at the same time. There is no such mechanism by which an anonymous inner class can implement multiple interfaces. An anonymous inner class can't even extend a class and implement an interface at the same time.
 
 
 ## References
