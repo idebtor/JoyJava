@@ -9,12 +9,14 @@ JoyJava Lecture Notes and Code Snippets
 -------------------------------------------------------------------
 While we are working on __Comparable and Comparator Interface__ lesson, we have learned __annoymous inner class__ and __interface__. We know that we __cannot__ instantiate an object from an interface since it consists of just abstract methods without any constructors.  Then a question arises with the following code snippets experienced in our Labs. Aren't they creating __an instance of__ `Comparator interface`?
 
-```	public static Comparator<Vehicle> sortByCapa = new Comparator<Vehicle>() {
+```	
+	public static Comparator<Vehicle> sortByCapa = new Comparator<Vehicle>() {
 		@Override
 		public int compare(Vehicle o1, Vehicle o2) {
 			return o1.getCapacity() - o2.getCapacity();
 		}
-	}; ```
+	}; 
+```
 
 ```
 	Collections.sort(arrList, new Comparator<Vehiclex>() {
@@ -22,7 +24,8 @@ While we are working on __Comparable and Comparator Interface__ lesson, we have 
 		public int compare(Vehiclex v1, Vehiclex v2) {
 			return v1.getName().compareTo(v2.getName());
 		}
-	}); ```
+	}); 
+```
 		
 
 ## Java Anonymous Inner Class
