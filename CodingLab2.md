@@ -15,13 +15,18 @@ Review through the __Comparable and Comparator Interface__ lesson.  Implement so
 
 	```private java.util.Date time;             // time stamp ```
 	
+- Triangle class has just one instance variable called:
+
+	```int width;		// equilateral triangle ```
+	
 - When you compare two time stamps, use the natural ordering of `Date` class since it must provide `Comparable` interface.
 
 - Use SimpleDateFormat("mm:ss") method to get the simple format of the time in `toString()` method.  
 	```
-		SimpleDateFormat df = new SimpleDateFormat("mm:ss");
+		SimpleDateFormat df = new SimpleDateFormat("mm:ss");   // df.format(this.time) 
 	```
-- Use `int` for all numerical compuations. For example, `PI` is defined as 3 and `getArea()` returns an `int` value.
+- Use `int` for all numerical compuations. 
+	For example, `PI` is defined as 3 and `getArea()` returns an `int` value. 
 
 - You may make a good use of Eclipse `Source` `Generate` menu to generate some of obivous code.
 	
