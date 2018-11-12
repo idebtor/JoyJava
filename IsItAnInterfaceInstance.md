@@ -62,11 +62,11 @@ class Dog {
 }
 ```
 
-In above piece of code; see the code line `Dog mydog = new Dog() {`, there is a brace at the end of line, not a semicolon. This curly brace opens the class definition and declares a new class that has no name (anonymous class). Now let's enter into the body of newly defined subclass of class `Dog` and you will see that `someDog()` is being overridden. This is the crux of defining an anonymous inner class because we want to override one or more methods of the super class on the fly.
+In above piece of code; see the code line `Dog mydog = new Dog() {`, there is a brace at the end of line, not a semicolon. This curly brace opens the class definition and declares a new class that has no name (anonymous class). Now let's enter into the body of newly defined subclass of class `Dog` and you will see that `someDog()` is being overridden. This is the crux of defining an anonymous inner class because we want to override one or more methods of __the super class__ on the fly.
 
 Remember, anonymous inner classes are inherited ones, and we always use a superclass reference variable to refer to an anonymous subclass object. And, we can only call methods on an anonymous inner class object that are defined in the superclass. Though, we can introduce new methods in anonymous inner class, but we cannot access them through the reference variable of superclass because superclass does not know anything about new methods or data members introduced in subclass.
 
-It would be interesting to know that you can also create an anonymous inner class for an interface type. Magically you can also pass anonymous inner class as an argument to a method. We will talk of them in subsequent sections.
+It would be interesting to know that you can also create an anonymous inner class __for an interface type__. Magically you can also pass anonymous inner class as an argument to a method. We will talk of them in subsequent sections.
 
 
 ## Java Anonymous Implementer of an Interface Type
