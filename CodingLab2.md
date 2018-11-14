@@ -17,7 +17,7 @@ Review through the __Comparable and Comparator Interface__ lesson.  Implement so
 	
 - Triangle class has just one instance variable called:
 
-	```int width;		// equilateral triangle ```
+	```int width;	// height = width  ```
 	
 - When you compare two time stamps, use the natural ordering of `Date` class since it must provide `Comparable` interface.
 
@@ -68,6 +68,3 @@ Cir[R=2 Time[05:08]]
 Sqr[S=6 Time[05:09]]
 
 ```
-
-
-
