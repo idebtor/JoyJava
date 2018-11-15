@@ -37,13 +37,13 @@ public class StackOfInts {
 		return size;
 	}
 
-   /** Return the capacity of the stack */
+        /** Return the capacity of the stack */
 	public int capacity() {
 		return elements.length;
 	}
 
 	/** Make the stack empty */
-	public int clear() {
-       return 0;  // Your code here
-  }
+	public void clear() {
+              // Your code here
+        }
 }
