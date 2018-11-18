@@ -45,24 +45,40 @@ There is, however, one problem. Suppose, for example, you wish to define an Arra
 ```
 // Pre-JDK 1.5
 import java.util.*;
-public class ArrayListWithoutGenericsTest {
+public class ArrayListWithoutGenericsDriver {
    public static void main(String[] args) {
       List strLst = new ArrayList();  // List and ArrayList holds Objects
       strLst.add("alpha");            // String upcast to Object implicitly
       strLst.add("beta");
       strLst.add("charlie");
+
+      // Use an Iterator to list items:
       Iterator iter = strLst.iterator();
-      while (iter.hasNext()) {
-         String str = (String)iter.next(); // need to explicitly downcast Object back to String
-         System.out.println(str);
-      }
-      strLst.add(new Integer(1234));       // Compiler/runtime cannot detect this error
-      String str = (String)strLst.get(3);  // compile ok, but runtime ClassCastException
+      //////////////////////////////////////////////////////////////////
+      // need to explicitly downcast Object back to String
+
+
+
+
+      //////////////////////////////////////////////////////////////////
+
+      // Add an Integer obj which is OK by compiler and runtime
+      //////////////////////////////////////////////////////////////////
+      // Compiler/runtime cannot detect this error
+
+      //////////////////////////////////////////////////////////////////
+
+      // The following code compiles ok, but runtime ClassCastException
+      String str = (String)strLst.get(3);  
    }
 }
 ```
+
+
 # 2. Generics
+
 ### Let's write our own "type-safe" ArrayList
+
 We shall illustrate the use of generics by writing our own __type-safe__ resizable array for holding a particular type of objects (similar to an ArrayList).
 
 Let's begin with a version without generics called MyArrayList:
@@ -98,29 +114,37 @@ public class MyArrayList {
 
 The MyArrayList is __not type-safe__. For example, if we create a MyArrayList which is meant to hold String, but added in an Integer. The compiler __cannot__ detect the error. This is because MyArrayList is designed to hold Objects and any Java classes can be upcast to Object.
 ```
-public class MyArrayListTest {
+public class MyArrayListDriver {
    public static void main(String[] args) {
       // Intends to hold a list of Strings, but not type-safe
       MyArrayList strLst = new MyArrayList();
+
       // adding String elements - implicitly upcast to Object
       strLst.add("alpha");
       strLst.add("beta");
+      strLst.add("charlie");
+
       // retrieving - need to explicitly downcast back to String
-      for (int i = 0; i < strLst.size(); ++i) {
-         String str = (String)strLst.get(i);
-         System.out.println(str);
-      }
+      ///////////////////////////////////////////////////////////////
+
+
+
+
+      ///////////////////////////////////////////////////////////
 
       // Inadvertently added a non-String object will cause a runtime
-      // ClassCastException. Compiler unable to catch the error.
-      strLst.add(new Integer(1234));   // compiler/runtime cannot detect this error
+      // ClassCastException. Compiler/Runtime unable to catch the error.
+      strLst.add(new Integer(1234));   
+
+      // Compile ok, Runtime ClassCastException
       for (int i = 0; i < strLst.size(); ++i) {
-         String str = (String)strLst.get(i);   // compile ok, runtime ClassCastException
+         String str = (String)strLst.get(i);   
          System.out.println(str);
       }
    }
 }
 ```
+
 If you intend to create a list of String, but inadvertently added in an non-String object, the non-String will be upcasted to Object implicitly. The compiler is not able to check whether the downcasting is valid at compile-time (this is known as late binding or dynamic binding). Incorrect downcasting will show up only at runtime, in the form of ClassCastException, which could be too late. The compiler is not able to catch this error at compiled time. Can we make the compiler to catch this error and ensure type safety at runtime?
 
 ## 2.1 Generics classes
@@ -184,14 +208,26 @@ The following test program creates GenericBoxes with various types (String, Inte
 ```
 public class GenericBoxDriver {
    public static void main(String[] args) {
-      GenericBox<String> box1 = new GenericBox<>("Hello");
-      String str = box1.getContent();  // no explicit downcasting needed
+
+      // Create box1 and insert "Hello". Get the contents and print it.
+      /////////////////////////////////////////////////////////////////
+
+
+      /////////////////////////////////////////////////////////////////
       System.out.println(box1);
-      GenericBox<Integer> box2 = new GenericBox<>(123);  // autobox int to Integer
-      int i = box2.getContent();       // downcast to Integer, auto-unbox to int
+
+      // Create box2 and insert 123. Get the contents and print it.
+      ////////////////////////////////////////////////////////////////
+                                       // autobox int to Integer
+                                       // downcast to Integer, auto-unbox to int
+      ////////////////////////////////////////////////////////////////
       System.out.println(box2);
-      GenericBox<Double> box3 = new GenericBox<>(55.66);  // autobox double to Double
-      double d = box3.getContent();     // downcast to Double, auto-unbox to double
+
+      // Create box3 and insert 12.34. Get the contents and print it.
+      /////////////////////////////////////////////////////////////////
+                                        // autobox double to Double
+                                        // downcast to Double, auto-unbox to double
+      /////////////////////////////////////////////////////////////////
       System.out.println(box3);
    }
 }
@@ -202,7 +238,7 @@ The driver prints:
 ```
 Hello (class java.lang.String)
 123 (class java.lang.Integer)
-55.66 (class java.lang.Double)
+12.34 (class java.lang.Double)
 ```
 
 ### Type Erasure
@@ -252,14 +288,16 @@ Let's return to the MyArrayList example. With the use of generics, we can rewrit
 // A dynamically allocated array with generics
 public class MyGenericArrayList<E> {
    private int size;     // number of elements
-   private Object[] elements;
+   private Object[]     elements;
 
    public MyGenericArrayList() {  // constructor
       elements = new Object[10];  // allocate initial capacity of 10
       size = 0;
    }
 
-   public void add(E e) {
+   ////////////// add() //////////////////////////////
+
+   ///////////////////////////////////////////////////
       if (size < elements.length) {
          elements[size] = e;
       } else {
@@ -268,7 +306,9 @@ public class MyGenericArrayList<E> {
       ++size;
    }
 
-   public E get(int index) {
+   ///////////// get() ///////////////////////////////
+
+   ///////////////////////////////////////////////////
       if (index >= size)
          throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
       return (E)elements[index];
@@ -284,17 +324,24 @@ When the class is instantiated with an actual type parameter, e.g. MyGenericArra
 public class MyGenericArrayListDriver {
    public static void main(String[] args) {
       // type safe to hold a list of Strings
-      MyGenericArrayList<String> strLst = new MyGenericArrayList<String>();
+      MyGenericArrayList<String> strLst = new MyGenericArrayList<>();
 
       strLst.add("alpha");   // compiler checks if argument is of type String
       strLst.add("beta");
+      strLst.add("charlie");
 
-      for (int i = 0; i < strLst.size(); ++i) {
-         String str = strLst.get(i);   // compiler inserts the downcasting operator (String)
-         System.out.println(str);
-      }
+      // Retrieve strings and print them.
+      // Compiler inserts the downcasting operator (String)
+      /////////////////////////////////////////////////////////////////
 
-      strLst.add(new Integer(1234));  // compiler detected argument is NOT String, issues compilation error
+
+
+
+      //////////////////////////////////////////////////////////////////
+
+      // Insert an Integer obj - 1234,
+      // Compiler detected argument is NOT String, issues compilation error
+      // strLst.add(new Integer(1234));  
    }
 }
 ```
@@ -303,15 +350,86 @@ With generics, the compiler is able to perform type checking during compilation 
 
 Unlike "template" in C++, which creates a new type for each specific parameterized type, in Java, a generics class is only compiled once, and there is only one single class file which is used to create instances for all the specific types.
 
-## 2.2 Generic Methods
-Methods can be defined with generic types as well (similar to generic class). For example,
+
+## 2.2 Generic Interfaces
+
+Since JDK1.5, Java allows you to define generic classes, interfaces, and methods. Several interfaces and classes in the Java API are modified using generics. For example, prior to JDK 1.5, the java.lang.Comparable interface was defined as shown below:
 
 ```
+package java.lang;
+
+public interface Comparable {
+    public int compareTo (Object o);
+}
+```
+But since JDK 1.5 it is modified as shown below:
+
+```
+package java.lang;
+
+public interface Comparable<T> {
+    public int compareTo (<T> o);
+}
+```
+
+Here, <T> represents a _formal generic type_, which can be replaced later with an _actual concrete type_.
+
+## 2.3 Generic Methods
+Methods can be defined with generic types as well (similar to generic class).
+
+Let's suppose we want to implement a static method that accepts an array and prints its elements. The array could be an array of Integers, Strings or others.
+
+Prior JDK 1.5, our code may be something similar as shown below:
+```
+public class GenericMethodDriver {
+	public static void print(Object list) {
+		for (int i = 0; i < list.length; i++) {
+			System.out.println(list[i] + " ");
+		}
+	}
+
+	public static void main(String[] args) {
+		Integer[] ints = {1, 2, 3, 4};
+		String[] strs = {"Seoul", "Pusan", "Pohang"};
+
+		GenericMethodDriver.print(ints);
+		GenericMethodDriver.print(strs);
+	}
+}
+```
+
+Using generics since JDK 1.5, the code may be something like:
+
+```
+public class GenericMethodDriver {
+    /////////////////////////////////////////////////////////////
+
+    /////////////////////////////////////////////////////////////
+		for (int i = 0; i < list.length; i++) {
+			System.out.println(list[i] + " ");
+		}
+	}
+
+	public static void main(String[] args) {
+		Integer[] ints = {1, 2, 3, 4};
+		String[] strs = {"Seoul", "Pusan", "Pohang"};
+
+		GenericMethodDriver.print(ints);
+		GenericMethodDriver.print(strs);
+	}
+}
+```
+This example shown does not show you much about the core of the generics.
+
+Still, however, it tells you that a generic method can declare formal type parameters (e.g. <E>, <K,V>) _preceding the return type_. The formal type parameters can then be used as placeholders for return type, method's parameters and local variables within a generic method, for proper type-checking by compiler.
+
+Let's see another example shown below:
+```
+// This method takes an array and add its elements into the ArrayList obj.
 public static <E> void ArrayToArrayList(E[] a, ArrayList<E> lst) {
    for (E e : a) lst.add(e);
 }
 ```
-A generic method can declare formal type parameters (e.g. <E>, <K,V>) _preceding the return type_. The formal type parameters can then be used as placeholders for return type, method's parameters and local variables within a generic method, for proper type-checking by compiler.
 
 Similar to generics class, when the compiler translates a generic method, it replaces the formal type parameters using erasure. All the generic types are replaced with type Object by default (or the upper bound of type). The translated version is as follows:
 
@@ -332,12 +450,13 @@ public class GenericMethodDriver {
    }
 
    public static void main(String[] args) {
-      ArrayList<Integer> lst = new ArrayList<Integer>();
+      ArrayList<Integer> lst = new ArrayList<>();
 
       Integer[] intArray = {55, 66};  // autobox
       ArrayToArrayList(intArray, lst);
       for (Integer i : lst) System.out.println(i);
 
+      // Compiler knows that lst is an Integer ArrayList type
       String[] strArray = {"one", "two", "three"};
       //ArrayToArrayList(strArray, lst);   // Compilation Error below
    }
@@ -351,7 +470,7 @@ cannot be applied to (java.lang.String[],java.util.ArrayList<java.lang.Integer>)
       ^
 ```
 
-## 2.3  Wildcards
+## 2.4  Wildcards
 
 Consider the following lines of codes:
 ```
@@ -363,10 +482,10 @@ This error is against our intuition on polymorphism, as we often assign a subcla
 
 Consider these two statements:
 ```
-List<String> strLst = new ArrayList<String>();   // 1
+List<String> strLst = new ArrayList<>();         // 1
 List<Object> objLst = strList;                   // 2 - Compilation Error
 ```
-ine 2 generates a compilation error. But if line 2 succeeds and some arbitrary objects are added into objLst, strLst will get "corrupted" and no longer contains only Strings. (objLst and strLst have the same reference.)
+Line 2 generates a compilation error. But if line 2 succeeds and some arbitrary objects are added into objLst, strLst will get "corrupted" and no longer contains only Strings. (objLst and strLst have the same reference.)
 
 Because of the above, suppose we want to write a method called printList(List<.>) to print the elements of a List. If we define the method as printList(List<Object> lst), then it can only accept an argument of List<object>, but not List<String> or List<Integer>. For example,
 
@@ -380,7 +499,7 @@ public class GenericWildcardDriver {
    }
 
    public static void main(String[] args) {
-      List<Object> objLst = new ArrayList<Object>();
+      List<Object> objLst = new ArrayList<>();
       objLst.add(new Integer(55));
       printList(objLst);   // matches
 
@@ -392,15 +511,12 @@ public class GenericWildcardDriver {
 ```
 
 ### Unbounded Wildcard <?>
-To resolve this problem, a wildcard (?) is provided in generics, which stands for any unknown type. For example, we can rewrite our printList() as follows to accept a List of any unknown type.
+To resolve this problem, a wildcard (?) is provided in generics, which stands for _any unknown type_. For example, we can rewrite our printList() as follows to accept a List of any unknown type.
 ```
 public static void printList(List<?> lst) {
   for (Object o : lst) System.out.println(o);
 }
 ```
-
-### Upperbound Wildcard <? extends type>
-To resolve this problem, a wildcard (?) is provided in generics, which stands __for any unknown type__. For example, we can rewrite our printList() as follows to accept a List of any unknown type.
 
 ### Upperbound Wildcard <? extends type>
 The wildcard <? extends type> stands for type and its sub-type. For example,
@@ -410,6 +526,10 @@ public static void printList(List<? extends Number> lst) {
   for (Object o : lst) System.out.println(o);
 }
 ```
+List<? extends Number> accepts List of Number and any subtype of Number, e.g., List<Integer> and List<Double>.
+
+Clearly, <?> can be interpreted as <? extends Object>, which is applicable to all Java classes.
+
 Another example,
 ```
 // List<Number> lst = new ArrayList<Integer>();  // Compilation Error
@@ -422,16 +542,37 @@ The wildcard <? super type> matches type, as well as its super-type. In other wo
 
 Read Java Online Tutorial ["More Fun with Wildcards"](https://docs.oracle.com/javase/tutorial/extra/generics/morefun.html).
 
-## 2.4  Bounded Generics
+## 2.5  Bounded Generics
 
 A bounded parameter type is a generic type that specifies a bound for the generic, in the form of <T extends _ClassUpperBound_>, e.g., <T extends Number> accepts Number and its subclasses (such as Integer and Double).
 
 ### Example
 The method add() takes a type parameter <T extends Number>, which accepts Number and its subclasses (such as Integer and Double).
 
+Without using generics:
 ```
-public class MyMath {
-   public static <T extends Number> double add(T first, T second) {
+public class GenericMathDriver {
+    //////////////////////////////////////////////////////////////
+
+    /////////////////////////////////////////////////////////////
+		return first.doubleValue() + second.doubleValue();
+	}
+
+	public static void main(String[] args) {
+		System.out.println(add(55, 66));     // int -> Integer
+		System.out.println(add(5.5f, 6.6f)); // float -> Float
+		System.out.println(add(5.5, 6.6));   // double -> Double
+	}
+}
+
+```
+Using generics:
+
+```
+public class GenericMathDriver {
+   //////////////////////////////////////////////////////////////////
+   
+   //////////////////////////////////////////////////////////////////
       return first.doubleValue() + second.doubleValue();
    }
 
