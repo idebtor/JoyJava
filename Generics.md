@@ -318,7 +318,7 @@ public class MyGenericArrayList<E> {
 }
 ```
 
-When the class is instantiated with an actual type parameter, e.g. MyGenericArrayList<String>, the compiler ensures add(E e) operates on only String type. It also inserts the proper downcasting operator to match the return type E of get(). For example,
+When the class is instantiated with an actual type parameter, e.g. MyGenericArrayList<String>, the compiler ensures `add(E e)` operates on only `String` type. It also inserts the proper downcasting operator to match the return type E of `get()`. For example,
 
 ```
 public class MyGenericArrayListDriver {
@@ -353,7 +353,7 @@ Unlike "template" in C++, which creates a new type for each specific parameteriz
 
 ## 2.2 Generic Interfaces
 
-Since JDK1.5, Java allows you to define generic classes, interfaces, and methods. Several interfaces and classes in the Java API are modified using generics. For example, prior to JDK 1.5, the java.lang.Comparable interface was defined as shown below:
+Since JDK1.5, Java allows you to define generic classes, interfaces, and methods. Several interfaces and classes in the Java API are modified using generics. For example, prior to JDK 1.5, the `java.lang.Comparable` interface was defined as shown below:
 
 ```
 package java.lang;
@@ -372,7 +372,7 @@ public interface Comparable<T> {
 }
 ```
 
-Here, <T> represents a _formal generic type_, which can be replaced later with an _actual concrete type_.
+Here, `<T>` represents a _formal generic type_, which can be replaced later with an _actual concrete type_.
 
 ## 2.3 Generic Methods
 Methods can be defined with generic types as well (similar to generic class).
@@ -439,7 +439,7 @@ public static void ArrayToArrayList(Object[] a, ArrayList lst) {
    for (Object e : a) lst.add(e);          // compiler checks if e is of type E
 }
 ```
-However, compiler checks that a is of the type E[], lst is of type `ArrayList<E>`, and e is of type E, during invocation to ensure type-safety. For example,
+However, compiler checks that a is of the type `E[]`, lst is of type `ArrayList<E>`, and `e` is of type `E`, during invocation to ensure type-safety. For example,
 
 ```
 import java.util.*;
@@ -476,7 +476,7 @@ Consider the following lines of codes:
 ```
 ArrayList<Object> lst = new ArrayList<String>();
 ```
-It causes a compilation error "incompatible types", as ArrayList<String> is not an ArrayList<Object>.
+It causes a compilation error "incompatible types", as `ArrayList<String>` is not an `ArrayList<Object>`.
 
 This error is against our intuition on polymorphism, as we often assign a subclass instance to a superclass reference.
 
@@ -485,7 +485,7 @@ Consider these two statements:
 List<String> strLst = new ArrayList<>();         // 1
 List<Object> objLst = strList;                   // 2 - Compilation Error
 ```
-Line 2 generates a compilation error. But if line 2 succeeds and some arbitrary objects are added into objLst, strLst will get "corrupted" and no longer contains only Strings. (objLst and strLst have the same reference.)
+Line 2 generates a compilation error. But if line 2 succeeds and some arbitrary objects are added into `objLst`, `strLst` will get "corrupted" and no longer contains only Strings. (`objLst` and `strLst` have the same reference.)
 
 Because of the above, suppose we want to write a method called `printList(List<.>)` to print the elements of a `List`. If we define the method as `printList(List<Object> lst)`, then it can only accept an argument of `List<object>`, but not `List<String>` or `List<Integer>`. For example,
 
@@ -511,7 +511,7 @@ public class GenericWildcardDriver {
 ```
 
 ### Unbounded Wildcard <?>
-To resolve this problem, a wildcard (?) is provided in generics, which stands for _any unknown type_. For example, we can rewrite our `printList()` as follows to accept a List of any unknown type.
+To resolve this problem, a wildcard (?) is provided in generics, which stands for _any unknown type_. For example, we can rewrite our `printList()` as follows to accept a `List` of any unknown type.
 ```
 public static void printList(List<?> lst) {
   for (Object o : lst) System.out.println(o);
@@ -547,7 +547,7 @@ Read Java Online Tutorial ["More Fun with Wildcards"](https://docs.oracle.com/ja
 A bounded parameter type is a generic type that specifies a bound for the generic, in the form of `<T extends _ClassUpperBound_>`, e.g., `<T extends Number>` accepts `Number` and its subclasses (such as `Integer` and `Double`).
 
 ### Example
-The method add() takes a type parameter <T extends Number>, which accepts Number and its subclasses (such as Integer and Double).
+The method `add()` takes a type parameter `<T extends Number>`, which accepts `Number` and its subclasses (such as `Integer` and `Double`).
 
 Without using generics:
 ```
@@ -584,7 +584,7 @@ public class GenericMathDriver {
 }
 ```
 
-By default, Object is the upper-bound of the parameterized type. <T extends Comparable<T>> changes the upper bound to the Comparable interface, which declares an abstract method compareTo() for comparing two objects.
+By default, Object is the upper-bound of the parameterized type. `<T extends Comparable<T>>` changes the upper bound to the `Comparable` interface, which declares an abstract method `compareTo()` for comparing two objects.
 
 The compiler translates the above generic method to the following codes:
 
@@ -596,7 +596,7 @@ public static Comparable maximum(Comparable x, Comparable y) {
    return (x.compareTo(y) > 0) ? x : y;
 }
 ```
-When this method is invoked, e.g. via maximum(55, 66), the primitive ints are auto-boxed to Integer objects, which are then implicitly upcasted to Comparable. The compiler checks the type to ensure type-safety. The compiler also inserts an explicit downcast operator for the return type. That is,
+When this method is invoked, e.g. via `maximum(55, 66)`, the primitive ints are auto-boxed to `Integer` objects, which are then implicitly upcasted to `Comparable`. The compiler checks the type to ensure type-safety. The compiler also inserts an explicit downcast operator for the return type. That is,
 ```
 (Comparable)maximum(55, 66);
 (Comparable)maximum(6.6, 5.5);
