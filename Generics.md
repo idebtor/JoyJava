@@ -421,7 +421,7 @@ public class GenericMethodDriver {
 ```
 This example shown does not show you much about the core of the generics.
 
-Still, however, it tells you that a generic method can declare formal type parameters (e.g. <E>, <K,V>) _preceding the return type_. The formal type parameters can then be used as placeholders for return type, method's parameters and local variables within a generic method, for proper type-checking by compiler.
+Still, however, it tells you that a generic method can declare formal type parameters (e.g. `<E>`, `<K,V>`) _preceding the return type_. The formal type parameters can then be used as placeholders for return type, method's parameters and local variables within a generic method, for proper type-checking by compiler.
 
 Let's see another example shown below:
 ```
@@ -439,7 +439,7 @@ public static void ArrayToArrayList(Object[] a, ArrayList lst) {
    for (Object e : a) lst.add(e);          // compiler checks if e is of type E
 }
 ```
-However, compiler checks that a is of the type E[], lst is of type ArrayList<E>, and e is of type E, during invocation to ensure type-safety. For example,
+However, compiler checks that a is of the type E[], lst is of type `ArrayList<E>`, and e is of type E, during invocation to ensure type-safety. For example,
 
 ```
 import java.util.*;
@@ -487,7 +487,7 @@ List<Object> objLst = strList;                   // 2 - Compilation Error
 ```
 Line 2 generates a compilation error. But if line 2 succeeds and some arbitrary objects are added into objLst, strLst will get "corrupted" and no longer contains only Strings. (objLst and strLst have the same reference.)
 
-Because of the above, suppose we want to write a method called printList(List<.>) to print the elements of a List. If we define the method as printList(List<Object> lst), then it can only accept an argument of List<object>, but not List<String> or List<Integer>. For example,
+Because of the above, suppose we want to write a method called `printList(List<.>)` to print the elements of a `List`. If we define the method as `printList(List<Object> lst)`, then it can only accept an argument of `List<object>`, but not `List<String>` or `List<Integer>`. For example,
 
 ```
 import java.util.*;
@@ -511,7 +511,7 @@ public class GenericWildcardDriver {
 ```
 
 ### Unbounded Wildcard <?>
-To resolve this problem, a wildcard (?) is provided in generics, which stands for _any unknown type_. For example, we can rewrite our printList() as follows to accept a List of any unknown type.
+To resolve this problem, a wildcard (?) is provided in generics, which stands for _any unknown type_. For example, we can rewrite our `printList()` as follows to accept a List of any unknown type.
 ```
 public static void printList(List<?> lst) {
   for (Object o : lst) System.out.println(o);
@@ -519,16 +519,16 @@ public static void printList(List<?> lst) {
 ```
 
 ### Upperbound Wildcard <? extends type>
-The wildcard <? extends type> stands for type and its sub-type. For example,
+The wildcard `<? extends type>` stands for type and its sub-type. For example,
 
 ```
 public static void printList(List<? extends Number> lst) {
   for (Object o : lst) System.out.println(o);
 }
 ```
-List<? extends Number> accepts List of Number and any subtype of Number, e.g., List<Integer> and List<Double>.
+`List<? extends Number>` accepts List of Number and any subtype of Number, e.g., `List<Integer>` and `List<Double>`.
 
-Clearly, <?> can be interpreted as <? extends Object>, which is applicable to all Java classes.
+Clearly, `<?>` can be interpreted as `<? extends Object>`, which is applicable to all Java classes.
 
 Another example,
 ```
@@ -538,13 +538,13 @@ List<? extends Number> lst = new ArrayList<Integer>();
 
 ### Lowerbound Wildcard <? super type>
 
-The wildcard <? super type> matches type, as well as its super-type. In other words, it specifies the lower bound.
+The wildcard `<? super type>` matches type, as well as its super-type. In other words, it specifies the lower bound.
 
 Read Java Online Tutorial ["More Fun with Wildcards"](https://docs.oracle.com/javase/tutorial/extra/generics/morefun.html).
 
 ## 2.5  Bounded Generics
 
-A bounded parameter type is a generic type that specifies a bound for the generic, in the form of <T extends _ClassUpperBound_>, e.g., <T extends Number> accepts Number and its subclasses (such as Integer and Double).
+A bounded parameter type is a generic type that specifies a bound for the generic, in the form of `<T extends _ClassUpperBound_>`, e.g., `<T extends Number>` accepts `Number` and its subclasses (such as `Integer` and `Double`).
 
 ### Example
 The method add() takes a type parameter <T extends Number>, which accepts Number and its subclasses (such as Integer and Double).
