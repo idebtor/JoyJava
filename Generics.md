@@ -7,7 +7,7 @@ You are certainly familiar with passing arguments into methods. You place the ar
 
 The primary usage of generics is to abstract over types when working with _Collections_.
 
-For example, the class ArrayList is designed (by the class designer) to take a generics type <E> as follows:
+For example, the class `ArrayList` is designed (by the class designer) to take a generics type `<E>` as follows:
 
 ```
 public class ArrayList<E> implements List<E> .... {
@@ -24,7 +24,7 @@ public class ArrayList<E> implements List<E> .... {
 }
 ```
 
-To instantiate an ArrayList, the users need to provide the actual type for <E> for this particular instance. The actual type provided will then substitute all references to E inside the class. For example,
+To instantiate an `ArrayList`, the users need to provide the actual type for `<E>` for this particular instance. The actual type provided will then substitute all references to `E` inside the class. For example,
 
 ```
 List<Integer> lst1 = new ArrayList<>(); // E substituted with Integer
@@ -39,9 +39,9 @@ lst2.get(0);
 The above example showed that the class designers could be _generic_ about type; while the class users provide the _specific_ actual type information during instantiation. The type information is passed inside the angle bracket <>, just like method arguments are passed inside the round bracket ().
 
 ### Before Generics, Collections are not Type-Safe!
-Before JDK 1.5,  collections such as ArrayList are designed to hold java.lang.Object. Via polymorphism, any subclass of Object can be substituted for Object. Since Object is the common root class of all the Java's classes, a collection designed to hold Object can hold any Java classes.
+Before JDK 1.5,  collections such as ArrayList are designed to hold `java.lang.Object`. Via polymorphism, any subclass of `Object` can be substituted for `Object`. Since `Object` is the common root class of all the Java's classes, a collection designed to hold `Object` can hold any Java classes.
 
-There is, however, one problem. Suppose, for example, you wish to define an ArrayList of String. In the add(Object) operation, the String will be upcasted implicitly into Object by the compiler. During retrieval, however, it is the programmer's responsibility to downcast the Object back to an String explicitly. If you inadvertently added in a non-String object. the compiler cannot detect the error, but the downcasting will fail at runtime (ClassCastException thrown). Below is an example:
+There is, however, one problem. Suppose, for example, you wish to define an ArrayList of String. In the `add(Object)` operation, the `String` will be upcasted implicitly into `Object` by the compiler. During retrieval, however, it is the programmer's responsibility to downcast the `Object` back to an `String` explicitly. If you inadvertently added in a non-String object. the compiler cannot detect the error, but the downcasting will fail at runtime (`ClassCastException` thrown). Below is an example:
 ```
 // Pre-JDK 1.5
 import java.util.*;
@@ -79,9 +79,9 @@ public class ArrayListWithoutGenericsDriver {
 
 ### Let's write our own "type-safe" ArrayList
 
-We shall illustrate the use of generics by writing our own __type-safe__ resizable array for holding a particular type of objects (similar to an ArrayList).
+We shall illustrate the use of generics by writing our own __type-safe__ resizable array for holding a particular type of objects (similar to an `ArrayList`).
 
-Let's begin with a version without generics called MyArrayList:
+Let's begin with a version without generics called `MyArrayList`:
 ```
 // A dynamically allocated array which holds a collection of java.lang.Object - without generics
 public class MyArrayList {
@@ -112,7 +112,7 @@ public class MyArrayList {
 }
 ```
 
-The MyArrayList is __not type-safe__. For example, if we create a MyArrayList which is meant to hold String, but added in an Integer. The compiler __cannot__ detect the error. This is because MyArrayList is designed to hold Objects and any Java classes can be upcast to Object.
+The `MyArrayList` is __not type-safe__. For example, if we create a `MyArrayList` which is meant to hold String, but added in an `Integer`. The compiler __cannot__ detect the error. This is because `MyArrayList` is designed to hold `Object`s and any Java classes can be upcast to `Object`.
 ```
 public class MyArrayListDriver {
    public static void main(String[] args) {
@@ -145,7 +145,7 @@ public class MyArrayListDriver {
 }
 ```
 
-If you intend to create a list of String, but inadvertently added in an non-String object, the non-String will be upcasted to Object implicitly. The compiler is not able to check whether the downcasting is valid at compile-time (this is known as late binding or dynamic binding). Incorrect downcasting will show up only at runtime, in the form of ClassCastException, which could be too late. The compiler is not able to catch this error at compiled time. Can we make the compiler to catch this error and ensure type safety at runtime?
+If you intend to create a list of `String`, but inadvertently added in an non-String object, the non-String will be upcasted to `Object` implicitly. The compiler is not able to check whether the downcasting is valid at compile-time (this is known as late binding or dynamic binding). Incorrect downcasting will show up only at runtime, in the form of `ClassCastException`, which could be too late. The compiler is not able to catch this error at compiled time. Can we make the compiler to catch this error and ensure type safety at runtime?
 
 ## 2.1 Generics classes
 
@@ -177,7 +177,7 @@ Use an uppercase single-character for formal type parameter. For example,
     - S,U,V, etc. for 2nd, 3rd, 4th type parameters
 
 ### Example of Generic Class
-    In this example, a class called GenericBox, which takes a generic type parameter E, holds a content of type E. The constructor, getter and setter work on the parameterized type E. The toString() reveals the actual type of the content.
+    In this example, a class called GenericBox, which takes a generic type parameter `E`, holds a content of type `E`. The constructor, getter and setter work on the parameterized type `E`. The `toString()` reveals the actual type of the content.
 
 ```
     public class GenericBox<E> {
@@ -203,7 +203,7 @@ Use an uppercase single-character for formal type parameter. For example,
     }
 ```
 
-The following test program creates GenericBoxes with various types (String, Integer and Double). Take note that JDK 1.5 also introduces auto-boxing and unboxing to convert between primitives and wrapper objects.
+The following test program creates `GenericBox`es with various types (`String`, `Integer` and `Double`). Take note that JDK 1.5 also introduces auto-boxing and unboxing to convert between primitives and wrapper objects.
 
 ```
 public class GenericBoxDriver {
@@ -243,9 +243,9 @@ Hello (class java.lang.String)
 
 ### Type Erasure
 
-From the previous example, it seems that compiler substituted the parameterized type E with the actual type (such as String, Integer) during instantiation. If this is the case, the compiler would need to create a new class for each actual type (similar to C++'s template).
+From the previous example, it seems that compiler substituted the parameterized type `E` with the actual type (such as `String`, `Integer`) during instantiation. If this is the case, the compiler would need to create a new class for each actual type (similar to C++'s template).
 
-In fact, the compiler replaces all reference to parameterized type E with Object, performs the type check, and insert the required downcast operators. For example, the GenericBox is compiled as follows (which is compatible with codes without generics):
+In fact, the compiler replaces all reference to parameterized type `E` with `Object`, performs the type check, and insert the required downcast operators. For example, the GenericBox is compiled as follows (which is compatible with codes without generics):
 
 ```
 public class GenericBox {
@@ -318,7 +318,7 @@ public class MyGenericArrayList<E> {
 }
 ```
 
-When the class is instantiated with an actual type parameter, e.g. MyGenericArrayList<String>, the compiler ensures `add(E e)` operates on only `String` type. It also inserts the proper downcasting operator to match the return type E of `get()`. For example,
+When the class is instantiated with an actual type parameter, e.g. `MyGenericArrayList<String>`, the compiler ensures `add(E e)` operates on only `String` type. It also inserts the proper downcasting operator to match the return type E of `get()`. For example,
 
 ```
 public class MyGenericArrayListDriver {
