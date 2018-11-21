@@ -583,8 +583,25 @@ public class GenericMathDriver {
    }
 }
 ```
+-------------------
+## How the compiler treats the bounded generics?
+As mentioned before, by default, all the generic types are replaced with type Object, during the code translation. However, in the case of <? extends Number>, the generic type is replaced by the type Number, which serves as the _upper bound_ of the generic types. 
 
-By default, Object is the upper-bound of the parameterized type. `<T extends Comparable<T>>` changes the upper bound to the `Comparable` interface, which declares an abstract method `compareTo()` for comparing two objects.
+__Example__
+```
+public class TestGenericsMethod {
+   public static <T extends Comparable<T>> T maximum(T x, T y) {
+      return (x.compareTo(y) > 0) ? x : y;
+   }
+   
+   public static void main(String[] args) {
+      System.out.println(maximum(55, 66));
+      System.out.println(maximum(6.6, 5.5));
+      System.out.println(maximum("Monday", "Tuesday"));
+   }
+}
+```
+By default, Object is the _upper-bound_ of the parameterized type. `<T extends Comparable<T>>` changes the upper bound to the `Comparable` interface, which declares an abstract method `compareTo()` for comparing two objects.
 
 The compiler translates the above generic method to the following codes:
 
