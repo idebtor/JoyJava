@@ -282,7 +282,7 @@ In this way, the same class definition is used for all the types. Most important
 
 ### Continue with our "type-safe" ArrayList...
 
-Let's return to the MyArrayList example. With the use of generics, we can rewrite our program as follows:
+Let's return to the `MyArrayList` example. With the use of generics, we can rewrite our program into `MyGenericArrayList` as follows:
 
 ```
 // A dynamically allocated array with generics
@@ -510,7 +510,9 @@ public class GenericWildcardDriver {
 }
 ```
 
-### Unbounded Wildcard <?>
+There are three kinds of wildcard generic types to specify a range for a generic type. They are unbounded wildcards, bounded wildcards, and lower-bound wildcards. 
+
+### 1. Unbounded Wildcard <?>
 To resolve this problem, a wildcard (?) is provided in generics, which stands for _any unknown type_. For example, we can rewrite our `printList()` as follows to accept a `List` of any unknown type.
 ```
 public static void printList(List<?> lst) {
@@ -518,7 +520,7 @@ public static void printList(List<?> lst) {
 }
 ```
 
-### Upperbound Wildcard <? extends type>
+### 2. Upperbound Wildcard <? extends type>
 The wildcard `<? extends type>` stands for type and its sub-type. For example,
 
 ```
@@ -536,9 +538,9 @@ Another example,
 List<? extends Number> lst = new ArrayList<Integer>();
 ```
 
-### Lowerbound Wildcard <? super type>
+### 3. Lowerbound Wildcard <? super type>
 
-The wildcard `<? super type>` matches type, as well as its super-type. In other words, it specifies the lower bound.
+The wildcard `<? super type>` matches type, as well as its super-type. In other words, it specifies the lower bound.  There will be an example in the Lab assignment. 
 
 Read Java Online Tutorial ["More Fun with Wildcards"](https://docs.oracle.com/javase/tutorial/extra/generics/morefun.html).
 
