@@ -1,13 +1,13 @@
 
 # Lab for Generics
 
-Generics enable you to detect errors at compile time rather than at runtime. A generic class or method permits you to specify allowable types of objects that the class, method or interface can work with. If you attempt to use an incompatible object, the compiler detect that error.
+Generics enable you to detect errors at compile time rather than at runtime. A generic class or method permits you to specify allowable types of objects that the class, method or interface can work with. If you attempt to use an incompatible object, the compiler detect that error.  
 
-This Lab is based on the Shape class and its subclasses you have implemented before.
+This Lab 1 is based on the `Shape` class and its subclasses you have implemented before.
 
-## Generics Lab 1. Rewrite equalArea() method using generics.
+## Generics Lab 1. Rewrite equalArea() using generics.
 
-A generic type can be specified as a subtype of another type. Such a generic type is called _bounded_.  The following method tests whether two Shape objects have the same area. Rewrite equalArea() method using generics.
+A generic type can be specified as a subtype of another type. Such a generic type is called _bounded_.  The following method tests whether two Shape objects have the same area. 
 
 ```
 public static boolean equalArea(Shape o1, Shape o2) {
@@ -17,7 +17,7 @@ public static boolean equalArea(Shape o1, Shape o2) {
 
 
 
-## Generics Lab 2. Rewrite drawAll() method using generics.
+## Generics Lab 2. Rewrite drawAll() using method generics.
 Consider a simple drawing application that can draw shapes such as rectangles and circles. To represent these shapes within the program, you could define a class hierarchy such as this:
 
 ```
@@ -131,35 +131,8 @@ public class Canvas {
 
 __Hint:__ This is an example of a _bounded wildcard_. The ? stands for an unknown type, just like the wildcards we saw earlier. However, in this case, we know that this unknown type is in fact a subtype of Shape. (Note: It could be Shape itself, or some subclass; it need not literally extend Shape.) We say that Shape is the upper bound of the wildcard.
 
-## Generics Lab 3. 
-Given `GenericStack` class and `WildCardLab` class, there is a compile error in the `print` statement because `iStack` is not an instance of `GenericStack<Number>`.  The fact is that `Integer` is a subtype of `Number`, but `GenericStack<Integer>` is not a subtype of `GenericStack<Number>`.  To curcumvent this problem, you may use one of wildcard generic types. Fix the error by redefining the static `max()` method such that it uses the one of wildcard generics.  __Don't simply change `<Number>` to `<Integer>`__ since we are now practicing the use of generics.
-
-```
-public class WildCardLab {
-  public static void main(String[] args ) {
-    GenericStack<Integer> iStack = new GenericStack<>();
-    iStack.push(1); // 1 is autoboxed into new Integer(1)
-    iStack.push(2);
-    iStack.push(-2);
-
-    System.out.print("The max number is " + max(iStack)); // Compile Error: 
-  }
-
-  /** Find the maximum in a stack of numbers */
-  public static double max(GenericStack<Number> stack) {
-    double max = stack.pop().doubleValue(); // initialize max
-
-    while (!stack.isEmpty()) {
-      double value = stack.pop().doubleValue();
-      if (value > max)
-        max = value;
-    }
-
-    return max;
-  }
-}
-```
-
+## Generics Lab 3-1
+Let's define a class called `GenericStack` as shown below. Complete the class by implementing `pop()` method. Then it should run like a sample run. 
 ```
 public class GenericStack<E> {
   private java.util.ArrayList<E> list = new java.util.ArrayList<>();
@@ -176,11 +149,17 @@ public class GenericStack<E> {
     list.add(o);
   }
 
-  public E pop() {
-    E o = list.get(getSize() - 1);
+  ////////////////////////////////////////////////////
+  // pop() returns the object at the top of the stack.
+  // use ArrayList methods: get() and remove() 
+  // use GenericStack method: getSize()
+  ///////////////Your code here //////////////////////
+  public E pop() {             
+    E o = list.get(getSize() - 1);            
     list.remove(getSize() - 1);
     return o;
   }
+  ///////////////////////////////////////////////////
 
   public boolean isEmpty() {
     return list.isEmpty();
@@ -188,12 +167,126 @@ public class GenericStack<E> {
   
   @Override
   public String toString() {
-    return "stack: " + list.toString();
+    return "stack: " + list.toString();  // using Arraylist
+  }
+  
+  public static void main(String[] args) {
+	    GenericStack<String> s = new GenericStack<>();
+	    s.push("All"); 
+	    s.push("Have");
+	    s.push("Sinned");
+	    
+	    System.out.println(s); 		
+
+	    while(!s.isEmpty())
+	    	System.out.println(s.pop()); 
+	    
+	    System.out.println(s);    	// now stack is empty
   }
 }
 ```
 
+__Sample run:__
+```
+stack: [All, Have, Sinned]
+Sinned
+Have
+All
+stack: []
+```
+
+## Generics Lab 3-2 
+
+Given `GenericStack` class and `WildCardLab` class, there is a compile error in the `print` statement because `iStack` is not an instance of `GenericStack<Number>`.  The fact is that `Integer` is a subtype of `Number`, but `GenericStack<Integer>` is not a subtype of `GenericStack<Number>`.  To curcumvent this problem, you may use one of wildcard generic types. Fix the error by redefining the static `max()` method such that it uses the one of wildcard generics.  __Don't simply change `<Number>` to `<Integer>`__ since we are now practicing the use of generics.
+
+## Generics Lab 3-3
+Given `GenericStack` class and `WildCardLab` class, implement the `print` method that prints objects in a stack and empties the stack. Please note that `GenericStack<Integer>` is not a subtype of `GenericStack<Object>`, even though `Integer` is a subtype of `Object`. You may uncomment a couple lines in main() to test this functionality. 
+
+## Generics Lab 3-4
+Given `GenericStack` class and `WildCardLab` class, implement the `add(f_stack, t_stack)` method that removes all items from `f_stack` and add them to `t_stack`.   You may uncomment a couple lines in main() to test this functionality. 
+
+```
+public class WildCardLab {
+  /////////////// Lab 3-2 /////////////////////////////
+  /** Find the maximum in a stack of numbers */
+  public static double max(GenericStack<Number> stack) {
+    double max = stack.pop().doubleValue(); // initialize max
+
+    while (!stack.isEmpty()) {
+      double value = stack.pop().doubleValue();
+      if (value > max)
+        max = value;
+    }
+
+    return max;
+  }
+  
+  /////////////// Lab 3-3 /////////////////////////////
+  /** Print objects and empties the stack */
+  public static void print(GenericStack<?> stack) {
+	while (!stack.isEmpty()) 
+		System.out.println(stack.pop() + " ");
+  }
+  
+  /////////////// Lab 3-4 /////////////////////////////
+  /** Remove(or pop) all items in f_stack to to_stack  */
+  public static <T> void add(GenericStack<T> f_stack, GenericStack<? super T> t_stack) {
+	     while (!f_stack.isEmpty()) 
+		 t_stack.push(f_stack.pop());
+  }
+  
+  public static void main(String[] args ) {\
+    System.out.println("----Lab3-2----");
+    GenericStack<Integer> iStack = new GenericStack<>();
+    iStack.push(1); // 1 is autoboxed into new Integer(1)
+    iStack.push(2);
+    iStack.push(-2);
+    System.out.print("The max number is " + max(iStack)); // Compile Error: 
+    
+    System.out.println("----Lab3-3----");
+    iStack.push(1);       
+    iStack.push(2);
+    iStack.push(-2);
+    // print(iStack);
+    
+    System.out.println("----Lab3-4----");
+    iStack.push(1);       
+    iStack.push(2);
+    GenericStack<Object> jStack = new GenericStack<>();
+    jStack.push("Hello");
+    jStack.push(-2);
+    jStack.push("World");
+    // add(iStack, jStack);
+    // print(jStack);
+  }
+}
+```
+
+__Sample rurn__: 
+```
+----Lab3-2----
+The max number is 2.0
+----Lab3-3----
+-2 
+2 
+1 
+----Lab3-4----
+1 
+2 
+World 
+-2 
+Hello 
+```
+
 ## Submission:
-  Submit Canvas.java, WildCardLab.java
+
+  Submit `Canvas.java, StackGeneric.java and WildCardLab.java`
+  
+  Due: Dec. 1
+  
+  Credit: 
+  	- Lab 1: 1 point
+	- Lab 2: 1 point
+	- Lab 3: 2 points 
 
 
