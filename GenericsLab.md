@@ -83,17 +83,17 @@ public class Canvas {
 		s.draw(this);
 	}
 
-  ////////////// Rewrite drawAll method /////////////////
+        ////////////// Rewrite drawAll method /////////////////
 	public void drawAll(List<Shape> shapes) {
 		for (Shape s: shapes) {
 			s.draw(this);
 		}
 	}
 
-  ////////////// Rewrite equalArea method ///////////////
-  public static boolean equalArea(Shape o1, Shape o2) {
-    return o1.getArea() == o2.getArea();
-  }
+        ////////////// Rewrite equalArea method ///////////////
+        public static boolean equalArea(Shape o1, Shape o2) {
+           return o1.getArea() == o2.getArea();
+        }
 
 	public static void main(String[] args) {
 		Canvas myCanvas = new Canvas();
@@ -103,7 +103,7 @@ public class Canvas {
 		Square s2 = new Square(6);
 		Triangle s3 = new Triangle(3);
 		Point s4 = new Point(0, 0);
-    Circle s5 = new Circle(2);
+    		Circle s5 = new Circle(2);
 
 		myCanvas.draw(s1);
 
@@ -123,25 +123,26 @@ public class Canvas {
 		// myCanvas.drawAll(arrList);
 		// myCanvas.drawAll(cirList);
 
-    // System.out.println("equalArea(s1, s2)=" + Canvas.equalArea(s1, s2));
-    // System.out.println("equalArea(s1, s5)=" + Canvas.equalArea(s1, s5));
+                // System.out.println("equalArea(s1, s2)=" + Canvas.equalArea(s1, s2));
+                // System.out.println("equalArea(s1, s5)=" + Canvas.equalArea(s1, s5));
 	}
 }
 ```
 
 __Hint:__ This is an example of a _bounded wildcard_. The ? stands for an unknown type, just like the wildcards we saw earlier. However, in this case, we know that this unknown type is in fact a subtype of Shape. (Note: It could be Shape itself, or some subclass; it need not literally extend Shape.) We say that Shape is the upper bound of the wildcard.
 
-## Generics Lab 3. Chanage the following code such that the max method returns the max value in the stack.
+## Generics Lab 3. 
+Given the GenericStack class, there is a compile error in the print statement because iStack is not an instance of GenericStack<Number>.  The fact is that Integer is a subtype of Number, but GenericStack<Integer> is not a subtype of GenericStack<Number>.  To curcumvent this problem, use wildcard generic types. Fix the error by redefining the static max() method such that it uses the one of wildcard generics.  __Don't simply change <Number> to <Integer>__ since we are now practicing the use of generics.
 
 ```
 public class WildCardLab {
   public static void main(String[] args ) {
-    GenericStack<Integer> intStack = new GenericStack<>();
-    intStack.push(1); // 1 is autoboxed into new Integer(1)
-    intStack.push(2);
-    intStack.push(-2);
+    GenericStack<Integer> iStack = new GenericStack<>();
+    iStack.push(1); // 1 is autoboxed into new Integer(1)
+    iStack.push(2);
+    iStack.push(-2);
 
-    System.out.print("The max number is " + max(intStack)); // Error: 
+    System.out.print("The max number is " + max(iStack)); // Compile Error: 
   }
 
   /** Find the maximum in a stack of numbers */
@@ -155,6 +156,39 @@ public class WildCardLab {
     }
 
     return max;
+  }
+}
+```
+
+```
+public class GenericStack<E> {
+  private java.util.ArrayList<E> list = new java.util.ArrayList<>();
+
+  public int getSize() {
+    return list.size();
+  }
+
+  public E peek() {
+    return list.get(getSize() - 1);
+  }
+
+  public void push(E o) {
+    list.add(o);
+  }
+
+  public E pop() {
+    E o = list.get(getSize() - 1);
+    list.remove(getSize() - 1);
+    return o;
+  }
+
+  public boolean isEmpty() {
+    return list.isEmpty();
+  }
+  
+  @Override
+  public String toString() {
+    return "stack: " + list.toString();
   }
 }
 ```
