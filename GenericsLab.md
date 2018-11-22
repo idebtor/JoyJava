@@ -132,7 +132,7 @@ public class Canvas {
 __Hint:__ This is an example of a _bounded wildcard_. The ? stands for an unknown type, just like the wildcards we saw earlier. However, in this case, we know that this unknown type is in fact a subtype of Shape. (Note: It could be Shape itself, or some subclass; it need not literally extend Shape.) We say that Shape is the upper bound of the wildcard.
 
 ## Generics Lab 3. 
-Given the GenericStack class, there is a compile error in the print statement because iStack is not an instance of GenericStack<Number>.  The fact is that Integer is a subtype of Number, but GenericStack<Integer> is not a subtype of GenericStack<Number>.  To curcumvent this problem, use wildcard generic types. Fix the error by redefining the static max() method such that it uses the one of wildcard generics.  __Don't simply change <Number> to <Integer>__ since we are now practicing the use of generics.
+Given `GenericStack` class and `WildCardLab` class, there is a compile error in the `print` statement because `iStack` is not an instance of `GenericStack<Number>`.  The fact is that `Integer` is a subtype of `Number`, but `GenericStack<Integer>` is not a subtype of `GenericStack<Number>`.  To curcumvent this problem, you may use one of wildcard generic types. Fix the error by redefining the static `max()` method such that it uses the one of wildcard generics.  __Don't simply change `<Number>` to `<Integer>`__ since we are now practicing the use of generics.
 
 ```
 public class WildCardLab {
