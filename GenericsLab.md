@@ -154,11 +154,9 @@ public class GenericStack<E> {
   // use ArrayList methods: get() and remove() 
   // use GenericStack method: getSize()
   ///////////////Your code here //////////////////////
-  public E pop() {             
-    E o = list.get(getSize() - 1);            
-    list.remove(getSize() - 1);
-    return o;
-  }
+
+
+
   ///////////////////////////////////////////////////
 
   public boolean isEmpty() {
@@ -196,7 +194,6 @@ stack: []
 ```
 
 ## Generics Lab 3-2 
-
 Given `GenericStack` class and `WildCardLab` class, there is a compile error in the `print` statement because `iStack` is not an instance of `GenericStack<Number>`.  The fact is that `Integer` is a subtype of `Number`, but `GenericStack<Integer>` is not a subtype of `GenericStack<Number>`.  To curcumvent this problem, you may use one of wildcard generic types. Fix the error by redefining the static `max()` method such that it uses the one of wildcard generics.  __Don't simply change `<Number>` to `<Integer>`__ since we are now practicing the use of generics.
 
 ## Generics Lab 3-3
@@ -209,9 +206,8 @@ Given `GenericStack` class and `WildCardLab` class, implement the `add(f_stack, 
 public class WildCardLab {
   /////////////// Lab 3-2 /////////////////////////////
   /** Find the maximum in a stack of numbers */
-  public static double max(GenericStack<Number> stack) {
+  _____________________________________________________
     double max = stack.pop().doubleValue(); // initialize max
-
     while (!stack.isEmpty()) {
       double value = stack.pop().doubleValue();
       if (value > max)
@@ -223,16 +219,14 @@ public class WildCardLab {
   
   /////////////// Lab 3-3 /////////////////////////////
   /** Print objects and empties the stack */
-  public static void print(GenericStack<?> stack) {
-	while (!stack.isEmpty()) 
-		System.out.println(stack.pop() + " ");
-  }
+
+
   
   /////////////// Lab 3-4 /////////////////////////////
   /** Remove(or pop) all items in f_stack to to_stack  */
-  public static <T> void add(GenericStack<T> f_stack, GenericStack<? super T> t_stack) {
-	     while (!f_stack.isEmpty()) 
-		 t_stack.push(f_stack.pop());
+
+
+
   }
   
   public static void main(String[] args ) {\
@@ -285,8 +279,8 @@ Hello
   Due: Dec. 1
   
   Credit: 
-  	- Lab 1: 1 point
-	- Lab 2: 1 point
-	- Lab 3: 2 points 
+  	- Lab 1: 1 point <br>
+	- Lab 2: 1 point <br>
+	- Lab 3: 2 points <br>
 
 
