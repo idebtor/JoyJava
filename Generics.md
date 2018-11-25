@@ -655,13 +655,13 @@ class A implements Comparable<A>{
         return i - o.i;
     }
     public String toString(){
-        return ""+i;
+        return "" + i;
     }
 }
 
 class B extends A{
     public B(int x){
-        super(x+10);
+        super(x + 10);
     }
     // we do not override compareTo
 }
