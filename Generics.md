@@ -524,14 +524,14 @@ public static void printList(List<?> lst) {
 ```
 
 ### 2. Upperbound Wildcard <? extends type>
-The wildcard `<? extends type>` stands for type and its sub-type. For example,
+The wildcard `<? extends type>` stands for __type or its sub-type__. For example,
 
 ```
 public static void printList(List<? extends Number> lst) {
   for (Object o : lst) System.out.println(o);
 }
 ```
-`List<? extends Number>` accepts List of Number and any subtype of Number, e.g., `List<Integer>` and `List<Double>`.
+`List<? extends Number>` accepts List of __Number or any subtype of Number__, e.g., `List<Integer>` and `List<Double>`.
 
 Clearly, `<?>` can be interpreted as `<? extends Object>`, which is applicable to all Java classes.
 
@@ -543,7 +543,9 @@ List<? extends Number> lst = new ArrayList<Integer>();
 
 ### 3. Lowerbound Wildcard <? super type>
 
-The wildcard `<? super type>` matches type, as well as its super-type. In other words, it specifies the lower bound.  There will be an example in the Lab assignment.
+The wildcard `<? super type>` matches __type, as well as its super-type__. In other words, it specifies the lower bound.  There will be an example in the Lab assignment.
+
+An example is provided at the end this lecture note here.
 
 Read Java Online Tutorial ["More Fun with Wildcards"](https://docs.oracle.com/javase/tutorial/extra/generics/morefun.html).
 
@@ -665,7 +667,6 @@ class B extends A{
 }
 
 public class Test {
-
      public static void main(String[] args) {
          List<B> list = new ArrayList<B>();
          list.add(new B(3));
@@ -673,7 +674,7 @@ public class Test {
          list.add(new B(4));
          list.add(new B(2));
          Collections.sort(list); // public static <T extends Comparable<? super T>> void sort(List<T> list)
-         for( B x : list)
+         for (B x : list)
              System.out.println(x);
      }
 }
