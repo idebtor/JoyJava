@@ -77,11 +77,12 @@ public class ArrayListWithoutGenericsDriver {
 
 # 2. Generics
 
-### Let's write our own "type-safe" ArrayList
+### Let us write our own "type-safe" ArrayList
 
 We shall illustrate the use of generics by writing our own __type-safe__ resizable array for holding a particular type of objects (similar to an `ArrayList`).
 
 Let's begin with a version without generics called `MyArrayList`:
+
 ```
 // A dynamically allocated array which holds a collection of java.lang.Object - without generics
 public class MyArrayList {
@@ -165,7 +166,7 @@ public interface List<E> extends Collection<E> {
 
 <E> is called the _formal "type" parameter_, which can be used for passing "type" parameters during the actual instantiation.
 
-The mechanism is similar to method invocation. Recall that in a method's definition, we declare the _formal parameters_ for passing data into the method.
+The mechanism is similar to method invocation. Recall that in a method definition, we declare the _formal parameters_ for passing data into the method.
 
 ### Formal Type Parameter Naming Convention
 Use an uppercase single-character for formal type parameter. For example,
@@ -205,7 +206,7 @@ Use an uppercase single-character for formal type parameter. For example,
 
 The following test program creates `GenericBox`es with various types (`String`, `Integer` and `Double`). Take note that JDK 1.5 also introduces auto-boxing and unboxing to convert between primitives and wrapper objects.
 
-```
+```java
 public class GenericBoxDriver {
    public static void main(String[] args) {
 
@@ -243,11 +244,11 @@ Hello (class java.lang.String)
 
 ### Type Erasure
 
-From the previous example, it seems that compiler substituted the parameterized type `E` with the actual type (such as `String`, `Integer`) during instantiation. If this is the case, the compiler would need to create a new class for each actual type (similar to C++'s template).
+From the previous example, it seems that compiler substituted the parameterized type `E` with the actual type (such as `String`, `Integer`) during instantiation. If this is the case, the compiler would need to create a new class for each actual type (similar to C++ template).
 
 In fact, the compiler replaces all reference to parameterized type `E` with `Object`, performs the type check, and insert the required downcast operators. For example, the GenericBox is compiled as follows (which is compatible with codes without generics):
 
-```
+```java
 public class GenericBox {
    // Private variable
    private Object content;
@@ -278,11 +279,11 @@ String str = (String)box1.getContent();     // compiler inserts downcast operati
 System.out.println(box1);
 ```
 
-In this way, the same class definition is used for all the types. Most importantly, the bytecode are compatible with those without generics. This process is called __type erasure__.
+In this way, the same `class` definition is used for all the types. Most importantly, the bytecode are compatible with those without generics. This process is called __type erasure__.
 
-### Continue with our "type-safe" ArrayList...
+### Continue with our `type-safe` ArrayList...
 
-Let's return to the `MyArrayList` example. With the use of generics, we can rewrite our program into `MyGenericArrayList` as follows:
+Let us return to the `MyArrayList` example. With the use of generics, we can rewrite our program into `MyGenericArrayList` as follows:
 
 ```
 // A dynamically allocated array with generics
@@ -318,9 +319,9 @@ public class MyGenericArrayList<E> {
 }
 ```
 
-When the class is instantiated with an actual type parameter, e.g. `MyGenericArrayList<String>`, the compiler ensures `add(E e)` operates on only `String` type. It also inserts the proper downcasting operator to match the return type E of `get()`. For example,
+When the `class` is instantiated with an actual type parameter, e.g. `MyGenericArrayList<String>`, the compiler ensures `add(E e)` operates on only `String` type. It also inserts the proper downcasting operator to match the return type E of `get()`. For example,
 
-```
+```java
 public class MyGenericArrayListDriver {
    public static void main(String[] args) {
       // type safe to hold a list of Strings
@@ -380,7 +381,8 @@ Methods can be defined with generic types as well (similar to generic class).
 Let's suppose we want to implement a static method that accepts an array and prints its elements. The array could be an array of Integers, Strings or others.
 
 Prior JDK 1.5, our code may be something similar as shown below:
-```
+
+```java
 public class GenericMethodDriver {
 	public static void print(Object list) {
 		for (int i = 0; i < list.length; i++) {
@@ -419,6 +421,7 @@ public class GenericMethodDriver {
 	}
 }
 ```
+
 This example shown does not show you much about the core of the generics.
 
 Still, however, it tells you that a generic method can declare formal type parameters (e.g. `<E>`, `<K,V>`) _preceding the return type_. The formal type parameters can then be used as placeholders for return type, method's parameters and local variables within a generic method, for proper type-checking by compiler.
@@ -441,7 +444,7 @@ public static void ArrayToArrayList(Object[] a, ArrayList lst) {
 ```
 However, compiler checks that a is of the type `E[]`, lst is of type `ArrayList<E>`, and `e` is of type `E`, during invocation to ensure type-safety. For example,
 
-```
+```java
 import java.util.*;
 public class GenericMethodDriver {
 
@@ -489,7 +492,7 @@ Line 2 generates a compilation error. But if line 2 succeeds and some arbitrary 
 
 Because of the above, suppose we want to write a method called `printList(List<.>)` to print the elements of a `List`. If we define the method as `printList(List<Object> lst)`, then it can only accept an argument of `List<object>`, but not `List<String>` or `List<Integer>`. For example,
 
-```
+```java
 import java.util.*;
 public class GenericWildcardDriver {
 
@@ -510,7 +513,7 @@ public class GenericWildcardDriver {
 }
 ```
 
-There are three kinds of wildcard generic types to specify a range for a generic type. They are unbounded wildcards, bounded wildcards, and lower-bound wildcards. 
+There are three kinds of wildcard generic types to specify a range for a generic type. They are unbounded wildcards, bounded wildcards, and lower-bound wildcards.
 
 ### 1. Unbounded Wildcard <?>
 To resolve this problem, a wildcard (?) is provided in generics, which stands for _any unknown type_. For example, we can rewrite our `printList()` as follows to accept a `List` of any unknown type.
@@ -540,7 +543,7 @@ List<? extends Number> lst = new ArrayList<Integer>();
 
 ### 3. Lowerbound Wildcard <? super type>
 
-The wildcard `<? super type>` matches type, as well as its super-type. In other words, it specifies the lower bound.  There will be an example in the Lab assignment. 
+The wildcard `<? super type>` matches type, as well as its super-type. In other words, it specifies the lower bound.  There will be an example in the Lab assignment.
 
 Read Java Online Tutorial ["More Fun with Wildcards"](https://docs.oracle.com/javase/tutorial/extra/generics/morefun.html).
 
@@ -552,6 +555,7 @@ A bounded parameter type is a generic type that specifies a bound for the generi
 The method `add()` takes a type parameter `<T extends Number>`, which accepts `Number` and its subclasses (such as `Integer` and `Double`).
 
 Without using generics:
+
 ```
 public class GenericMathDriver {
     //////////////////////////////////////////////////////////////
@@ -573,7 +577,7 @@ Using generics:
 ```
 public class GenericMathDriver {
    //////////////////////////////////////////////////////////////////
-   
+
    //////////////////////////////////////////////////////////////////
       return first.doubleValue() + second.doubleValue();
    }
@@ -588,15 +592,16 @@ public class GenericMathDriver {
 -------------------
 ## How the compiler treats the bounded generics?
 
-As mentioned before, by default, all the generic types are replaced with type Object, during the code translation. However, in the case of <? extends Number>, the generic type is replaced by the type Number, which serves as the _upper bound_ of the generic types. 
+As mentioned before, by default, all the generic types are replaced with type Object, during the code translation. However, in the case of <? extends Number>, the generic type is replaced by the type Number, which serves as the _upper bound_ of the generic types.
 
 __Example__: Using generics, complete the maximum method such that it returns the maximum among two arguments.
-```
+
+```java
 public class TestGenericsMethod {
    public ____________________________________________________________ {
       return (x.compareTo(y) > 0) ? x : y;
    }
-   
+
    public static void main(String[] args) {
       System.out.println(maximum(55, 66));
       System.out.println(maximum(6.6, 5.5));
@@ -609,7 +614,7 @@ By default, Object is the _upper-bound_ of the parameterized type. `<T extends C
 
 The compiler translates the above generic method to the following codes:
 
-```
+```java
 public static Comparable maximum(Comparable x, Comparable y) {   
     // replace T by upper bound type Comparable
     // Compiler checks x, y are of the type Comparable
@@ -618,12 +623,68 @@ public static Comparable maximum(Comparable x, Comparable y) {
 }
 ```
 When this method is invoked, e.g. via `maximum(55, 66)`, the primitive ints are auto-boxed to `Integer` objects, which are then implicitly upcasted to `Comparable`. The compiler checks the type to ensure type-safety. The compiler also inserts an explicit downcast operator for the return type. That is,
+
 ```
 (Comparable)maximum(55, 66);
 (Comparable)maximum(6.6, 5.5);
 (Comparable)maximum("Monday", "Tuesday");
 ```
 We do not have to pass an actual type argument to a generic method. The compiler infers the type argument automatically, based of the type of the actual argument passed into the method.
+
+
+-----------------
+
+## What does the above syntax mean?
+```
+public static <T extends Comparable<? super T>> void sort(List<T> list)
+```
+This declaration says, that argument to `sort()` method must be of a type `List<T>`,
+where T could be any type that implements `Comparable<? super T>` (sort requires `compareTo` method defined in `Comparable` to compare elements of list)
+`Comparable<? super T>` means that type ? passed to `Comparable` could be __T__ or __any supertype of T__.
+
+#### Consider this code:
+```java
+class A implements Comparable<A>{
+    private int i;
+    public A(int x){
+        i = x;
+    }
+    public int compareTo(A o) {
+        return i - o.i;
+    }
+    public String toString(){
+        return ""+i;
+    }
+}
+
+class B extends A{
+    public B(int x){
+        super(x+10);
+    }
+    // we do not override compareTo
+}
+
+public class Test {
+
+     public static void main(String[] args) {
+         List<B> list = new ArrayList<B>();
+         list.add(new B(3));
+         list.add(new B(1));
+         list.add(new B(4));
+         list.add(new B(2));
+         Collections.sort(list); // public static <T extends Comparable<? super T>> void sort(List<T> list)
+         for( B x : list)
+             System.out.println(x);
+     }
+}
+```
+`Class B` doesn't implement `Comparable<B>` (and doesn't define it's own compareTo(B b) method).
+`Class B` inherits `compareTo(A x)` method from `class A` (we can say that it implements `Comparamble<A>`).
+And `sort(List<B>)` compiles fine, it is conforming with declaration:
+```
+public static <B extends Comparable<? super B>> void sort(List<B> list)
+```
+
 
 ## More References
 
