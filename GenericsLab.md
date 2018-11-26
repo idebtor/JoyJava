@@ -276,8 +276,8 @@ Hello
   Submit `Canvas.java, StackGeneric.java and WildCardLab.java` <br>
   Due: Dec. 1 <br>
   Credit:  <br>
-  	- Lab 1: 1 point <br>
-	- Lab 2: 1 point <br>
+  	- Lab 1: 0.5 point <br>
+	- Lab 2: 0.5 point <br>
 	- Lab 3: 2 points <br>
 
 
