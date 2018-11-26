@@ -5,7 +5,7 @@ Creating a login form is a common activity when developing an application. This 
 
 In this lesson, you will use JavaFX to build the login form shown in Figure 1.
 
-[Figure 1](https://github.com/idebtor/JoyJava/blob/master/JavaFX/images/loginFX.png)
+![Figure 1](https://github.com/idebtor/JoyJava/blob/master/JavaFX/images/loginFX.png)
 Figure 1 Login form
 
 ## Create a GridPane layout
