@@ -636,7 +636,7 @@ We do not have to pass an actual type argument to a generic method. The compiler
 
 -----------------
 
-## What does the above syntax mean?
+## What does the syntax below mean?
 ```
 public static <T extends Comparable<? super T>> void sort(List<T> list)
 ```
