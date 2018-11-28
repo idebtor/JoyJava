@@ -1,5 +1,5 @@
 
-# JavaFX Hello World Lab 2
+# JavaFX Hello World Lab2
 
 You already have a working version of `HellFX1.java` code from the previous lesson. Now you copy it and rename it as `HelloFX2.java`.  In this lab, we do
     > Count the button clicks.
@@ -67,3 +67,11 @@ public class HelloFX extends Application{
 }
 ```
 -------------------
+
+JoyChallenge:
+  > Do Lab2 without using a StackPane. You may increase the size of the scene. Why?
+
+JoyLesson:
+- The `GridPane` takes the entire space of one section(e.g. Top) of the `BorderPane`. Therefore, `setAlignment` is meaningless for `GridPane`.
+
+![HelloFX3](HelloFX3.png)
