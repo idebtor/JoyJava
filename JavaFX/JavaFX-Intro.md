@@ -1,5 +1,7 @@
 
-# JavaFX Hello World Labs
+# JavaFX Introduction
+  - JoyJava Lecture Note by idebtor@gmail.com
+  ----------------------
 
 JavaFX is a set of graphics and media packages that enable developers to design, create, test, debug, and deploy rich client applications that operate consistently across diverse platforms.
 
@@ -21,7 +23,7 @@ By default, when we access the JavaFX APIs, Eclipse will prompts the Access rest
 - Follow the instructions.
 - On completion, you will be asked to restart the Eclipse.
 
-## Java Hello World Example
+## JavaFX "Hello World"
 
 A simple example where we use a `StackPane` to lay out one `Circle` that draw the background and a `Button` with a `Hello World` text.
 

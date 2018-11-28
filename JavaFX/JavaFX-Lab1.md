@@ -1,5 +1,7 @@
 
-# JavaFX Hello World Lab 1
+# JavaFX Hello World Lab1
+  - JoyJava Lecture Note by idebtor@gmail.com
+  ------------------
 
 You already have a working version of HellFX code from the previous lesson. Now you copy it and rename it as HelloFX1.
 

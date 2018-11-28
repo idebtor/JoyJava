@@ -1,5 +1,7 @@
 
 # JavaFX Hello World Lab2
+  - JoyJava Lecture Note by idebtor@gmail.com
+  ------------------
 
 You already have a working version of `HellFX1.java` code from the previous lesson. Now you copy it and rename it as `HelloFX2.java`.  In this lab, we do
     > Count the button clicks.
@@ -67,6 +69,14 @@ public class HelloFX extends Application{
 }
 ```
 -------------------
+
+JoyQuestion:
+You may see a warning when write the third line in code snippet shown below. Why the warning and how do you get rid of the warning?
+```java
+BorderPane bp = new BorderPane();   
+bp.setBottom(lbl);
+bp.setAlignment(lbl, Pos.CENTER);
+```
 
 JoyChallenge:
   > Do Lab2 without using a `StackPane`.

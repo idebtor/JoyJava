@@ -1,5 +1,6 @@
 
 # Comparator with Lambda Expression in Java 8
+  - JoyJava Lecture Note by idebtor@gmail.com
 -------------------
 
 Overview
@@ -82,4 +83,3 @@ Using this Lambda expression you may write _forEach_ loop as shown below;
 ```
 group.forEach( (s) -> System.out.println(s) );
 ```
-

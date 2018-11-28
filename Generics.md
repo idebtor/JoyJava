@@ -1,5 +1,7 @@
 
 # Introduction to Generics (since JDK 1.5)
+  - JoyJava Lecture Note by idebtor@gmail.com
+  --------------
 
 JDK 1.5 introduces _generics_, which supports _abstraction over types (or parameterized types)_. __The class designers__ can be _generic_ about _types in the definition_, while __the users__ can be _specific in the types during the object instantiation or method invocation_.
 

@@ -1,21 +1,16 @@
+# Is it an interface instance?
+  - JoyJava Lecture Note by idebtor@gmail.com
 
-# JoyJava
-JoyJava Lecture Notes and Code Snippets
-
-  Created - 10/31/2018 <br>  
-  Author -- Youngsup Kim
-  
-# Is it an interface instance? 
 -------------------------------------------------------------------
 While we are working on __Comparable and Comparator Interface__ lesson, we have learned __annoymous inner class__ and __interface__. We know that we __cannot__ instantiate an object from an interface since it consists of just abstract methods without any constructors.  Then a question arises with the following code snippets experienced in our Labs. Aren't they creating __an instance of__ `Comparator interface`?
 
-```	
+```
 	public static Comparator<Vehicle> sortByCapa = new Comparator<Vehicle>() {
 		@Override
 		public int compare(Vehicle o1, Vehicle o2) {
 			return o1.getCapacity() - o2.getCapacity();
 		}
-	}; 
+	};
 ```
 
 ```
@@ -24,9 +19,9 @@ While we are working on __Comparable and Comparator Interface__ lesson, we have 
 		public int compare(Vehiclex v1, Vehiclex v2) {
 			return v1.getName().compareTo(v2.getName());
 		}
-	}); 
+	});
 ```
-		
+
 
 ## Java Anonymous Inner Class
 
@@ -49,7 +44,7 @@ public class AnonymousClassDemo {
 				System.out.println("Anonymous Dog : " + this.getClass().getName());
 			}
 		}; // anonymous class body closes here
-		
+
 		// mydog is an object of anonymous subclass of Dog.
 		mydog.someDog();
 	}
@@ -81,8 +76,8 @@ public class AnonymousInterfaceDemo {
 				System.out.println("It is manageable");
 			}
 		}; // anonymous class that implements Manageable interface closes here
-		
-		// m is an object of an anonymous class which implements 
+
+		// m is an object of an anonymous class which implements
 		// the Manageable interface.
 		m.manage();
 	}
@@ -100,15 +95,15 @@ It is very important to note about anonymous inner classes which can __either im
 
 ## Conclusion
 
-In the following code, we are not instantiating an instance of Comparator interface. 
+In the following code, we are not instantiating an instance of Comparator interface.
 
-```	
+```
 	public static Comparator<Vehicle> sortByCapa = new Comparator<Vehicle>() {
 		@Override
 		public int compare(Vehicle o1, Vehicle o2) {
 			return o1.getCapacity() - o2.getCapacity();
 		}
-	}; 
+	};
 ```
 
 Through the code above, an object called sortByCapa is instantiated by an anonymous inner class that implements Comparator interface. By the way, you may invoke  `this.getClass().getName()` inside compare() method to print the anonymous class name which ends with a dollar sign with a number such as ~$1.

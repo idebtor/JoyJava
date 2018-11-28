@@ -1,5 +1,7 @@
 
 # Lab for Generics
+  - JoyJava Lecture Note by idebtor@gmail.com
+  ----------------------
 
 Generics enable you to detect errors at compile time rather than at runtime. A generic class or method permits you to specify allowable types of objects that the class, method or interface can work with. If you attempt to use an incompatible object, the compiler detect that error.  
 
@@ -7,7 +9,7 @@ This Lab 1 is based on the `Shape` class and its subclasses you have implemented
 
 ## Generics Lab 1. Rewrite equalArea() using generics.
 
-A generic type can be specified as a subtype of another type. Such a generic type is called _bounded_.  The following method tests whether two Shape objects have the same area. 
+A generic type can be specified as a subtype of another type. Such a generic type is called _bounded_.  The following method tests whether two Shape objects have the same area.
 
 ```
 public static boolean equalArea(Shape o1, Shape o2) {
@@ -132,7 +134,7 @@ public class Canvas {
 __Hint:__ This is an example of a _bounded wildcard_. The ? stands for an unknown type, just like the wildcards we saw earlier. However, in this case, we know that this unknown type is in fact a subtype of Shape. (Note: It could be Shape itself, or some subclass; it need not literally extend Shape.) We say that Shape is the upper bound of the wildcard.
 
 ## Generics Lab 3-1
-Let's define a class called `GenericStack` as shown below. Complete the class by implementing `pop()` method. Then it should run like a sample run. 
+Let's define a class called `GenericStack` as shown below. Complete the class by implementing `pop()` method. Then it should run like a sample run.
 ```
 public class GenericStack<E> {
   private java.util.ArrayList<E> list = new java.util.ArrayList<>();
@@ -151,7 +153,7 @@ public class GenericStack<E> {
 
   ////////////////////////////////////////////////////
   // pop() returns the object at the top of the stack.
-  // use ArrayList methods: get() and remove() 
+  // use ArrayList methods: get() and remove()
   // use GenericStack method: getSize()
   ///////////////Your code here //////////////////////
 
@@ -162,23 +164,23 @@ public class GenericStack<E> {
   public boolean isEmpty() {
     return list.isEmpty();
   }
-  
+
   @Override
   public String toString() {
     return "stack: " + list.toString();  // using Arraylist
   }
-  
+
   public static void main(String[] args) {
 	    GenericStack<String> s = new GenericStack<>();
-	    s.push("All"); 
+	    s.push("All");
 	    s.push("Have");
 	    s.push("Sinned");
-	    
+
 	    System.out.println(s); 		
 
 	    while(!s.isEmpty())
-	    	System.out.println(s.pop()); 
-	    
+	    	System.out.println(s.pop());
+
 	    System.out.println(s);    	// now stack is empty
   }
 }
@@ -193,14 +195,14 @@ All
 stack: []
 ```
 
-## Generics Lab 3-2 
+## Generics Lab 3-2
 Given `GenericStack` class and `WildCardLab` class, there is a compile error in the `print` statement because `iStack` is not an instance of `GenericStack<Number>`.  The fact is that `Integer` is a subtype of `Number`, but `GenericStack<Integer>` is not a subtype of `GenericStack<Number>`.  To curcumvent this problem, you may use one of wildcard generic types. Fix the error by redefining the static `max()` method such that it uses the one of wildcard generics.  __Don't simply change `<Number>` to `<Integer>`__ since we are now practicing the use of generics.
 
 ## Generics Lab 3-3
-Given `GenericStack` class and `WildCardLab` class, implement the `print` method that prints objects in a stack and empties the stack. Please note that `GenericStack<Integer>` is not a subtype of `GenericStack<Object>`, even though `Integer` is a subtype of `Object`. You may uncomment a couple lines in main() to test this functionality. 
+Given `GenericStack` class and `WildCardLab` class, implement the `print` method that prints objects in a stack and empties the stack. Please note that `GenericStack<Integer>` is not a subtype of `GenericStack<Object>`, even though `Integer` is a subtype of `Object`. You may uncomment a couple lines in main() to test this functionality.
 
 ## Generics Lab 3-4
-Given `GenericStack` class and `WildCardLab` class, implement the `add(f_stack, t_stack)` method that removes all items from `f_stack` and add them to `t_stack`.   You may uncomment a couple lines in main() to test this functionality. 
+Given `GenericStack` class and `WildCardLab` class, implement the `add(f_stack, t_stack)` method that removes all items from `f_stack` and add them to `t_stack`.   You may uncomment a couple lines in main() to test this functionality.
 
 ```
 public class WildCardLab {
@@ -216,33 +218,33 @@ public class WildCardLab {
 
     return max;
   }
-  
+
   /////////////// Lab 3-3 /////////////////////////////
   /** Print objects and empties the stack */
 
 
-  
+
   /////////////// Lab 3-4 /////////////////////////////
   /** Remove(or pop) all items in f_stack to to_stack  */
 
 
 
   }
-  
+
   public static void main(String[] args ) {\
     System.out.println("----Lab3-2----");
     GenericStack<Integer> iStack = new GenericStack<>();
     iStack.push(1); // 1 is autoboxed into new Integer(1)
     iStack.push(2);
     iStack.push(-2);
-    System.out.print("The max number is " + max(iStack)); // Compile Error: 
-    
+    System.out.print("The max number is " + max(iStack)); // Compile Error:
+
     System.out.println("----Lab3-3----");
     iStack.push(1);       
     iStack.push(2);
     iStack.push(-2);
     // print(iStack);
-    
+
     System.out.println("----Lab3-4----");
     iStack.push(1);       
     iStack.push(2);
@@ -256,20 +258,20 @@ public class WildCardLab {
 }
 ```
 
-__Sample rurn__: 
+__Sample rurn__:
 ```
 ----Lab3-2----
 The max number is 2.0
 ----Lab3-3----
--2 
-2 
-1 
+-2
+2
+1
 ----Lab3-4----
-1 
-2 
-World 
--2 
-Hello 
+1
+2
+World
+-2
+Hello
 ```
 
 ## Submission:
@@ -279,5 +281,3 @@ Hello
   	- Lab 1: 0.5 point <br>
 	- Lab 2: 0.5 point <br>
 	- Lab 3: 2 points <br>
-
-

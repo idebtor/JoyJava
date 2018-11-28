@@ -1,4 +1,5 @@
 # Comparable and Comparator interfaces in Java
+  - JoyJava Lecture Note by idebtor@gmail.com
 --------------------
 
 ## 1. Introduction
@@ -152,7 +153,7 @@ Collections.sort(group, new StudentIDComparator());
 
 ## 5. Comparator Using a static object defined in the class.
 
-Sometimes creating many extra classes would not be desirable. Maybe it is a burden to maintain them separate (helper) classes. The developer of the class Student may offer this kind of capability from the beginning. 
+Sometimes creating many extra classes would not be desirable. Maybe it is a burden to maintain them separate (helper) classes. The developer of the class Student may offer this kind of capability from the beginning.
 
 In your class definition, alternatively, you may provide some different `Comparator` objects that already implemented `compare` methods as needed.
 
@@ -234,5 +235,3 @@ Then, we must ask ourselves why use a `Comparator` if we already have Comparable
 There are several reasons why:
 
 Sometimes, we can’t modify the source code of the class whose objects we want to sort, thus making the use of `Comparable` impossible. Using `Comparators` allows us to avoid adding additional code to our domain classes. We can define multiple different comparison strategies which isn’t possible when using `Comparable`.
-
-    
