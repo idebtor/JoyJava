@@ -69,7 +69,8 @@ public class HelloFX extends Application{
 -------------------
 
 JoyChallenge:
-  > Do Lab2 without using a `StackPane`. You may increase the size of the scene. Why does the label shown off the scene to begin with?
+  > Do Lab2 without using a `StackPane`.
+  > You may increase the size of the scene. Why does the label shown off the scene to begin with?
 
 JoyLesson:
 - The `GridPane` takes the entire space of one section(e.g. Top) of the `BorderPane`. Therefore, `setAlignment` is meaningless for `GridPane`.
