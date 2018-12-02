@@ -70,7 +70,8 @@ public class HelloFX extends Application{
 ```
 -------------------
 
-JoyQuestion:
+__JoyQuestion:__
+
 You may see a warning when write the third line in code snippet shown below. Why the warning and how do you get rid of the warning?
 ```java
 BorderPane bp = new BorderPane();   
@@ -78,11 +79,11 @@ bp.setBottom(lbl);
 bp.setAlignment(lbl, Pos.CENTER);
 ```
 
-JoyChallenge:
+__JoyChallenge:__
   > Do Lab2 without using a `StackPane`.
   > You may increase the size of the scene. Why is the label shown off the scene at the beginning?
 
-JoyLesson:
+__JoyLesson:__
 - The `GridPane` takes the entire space of one section(e.g. Top) of the `BorderPane`. Therefore, `setAlignment` is meaningless for `GridPane`.
 
 ![HelloFX3](images/HelloFX3.png)
