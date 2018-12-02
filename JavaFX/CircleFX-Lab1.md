@@ -7,7 +7,8 @@ This Lab draws a circle in at the center of a window with two buttons. One butto
 
 Note that CircleFX has a CirclePane object as an instance variable.
 
-![CircleFX](CirlceFX.png)
+![CircleFX](images/CircleFX.png)
+
 Figure 1. Circle with two control buttons
 
 
@@ -62,6 +63,16 @@ public class CircleFX extends Application {
     launch(args);
   }
 }
+
+/**
+ * Define a class called EnlargeHandler that implements the
+ * interface EventHandler<ActionEvent>.
+ * Then this class must override handle(ActionEvent e).
+ */
+
+
+
+
 
 class CirclePane extends StackPane {
   private Circle circle = new Circle(50);
