@@ -29,7 +29,7 @@ We know that the Buttons will need a class they can fire their events to. Firstl
 3. An anonymous inner class always uses the no-arg constructor from its superclass to create an instance. If an anonymous inner class implements an interface, the constructor is Object().
 4. An anonymous inner class is compiled into a class named OuterClassName$n.class. For example, if the outer class Test has two anonymous inner classes, they are compiled into Test$1.class and Test$2.class.
 
-## Method 3 - Using a lambda expressions
+## Method 3 - Using a lambda expression
 - Lambda Expressions (new to Java 8) can be considered an anonymous inner class with an abbreviated syntax.
 - The compiler treats lambda expressions like an object created from an anonymous inner class
 
