@@ -79,9 +79,7 @@ bp.setBottom(lbl);
 bp.setAlignment(lbl, Pos.CENTER);
 ```
 
-__JoyChallenge:__
-  > Do Lab2 without using a `StackPane`.
-  > You may increase the size of the scene. Why is the label shown off the scene at the beginning?
+
 
 __JoyLesson:__
 - The `GridPane` takes the entire space of one section(e.g. Top) of the `BorderPane`. Therefore, `setAlignment` is meaningless for `GridPane`.
