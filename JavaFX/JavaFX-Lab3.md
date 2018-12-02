@@ -63,5 +63,3 @@ public class HelloFX extends Application{
 __JoyLesson:__
 
 - The intance variables are freely accessible by inner classes, but not local variables.
-
-![HelloFX3](images/HelloFX3.png)
