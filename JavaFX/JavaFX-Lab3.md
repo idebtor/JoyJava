@@ -9,7 +9,7 @@ __JoyChallenge:__
   > Do Lab2 without using a `StackPane`.
   > You may increase the size of the scene. Why is the label shown off the scene at the beginning?
 
-  > Count the button clicks using an inner class which implements the EventHanlder interface.
+  > Count the button clicks using an inner class which implements the `EventHanlder` interface.
   > Think about how you are going to handle the label object `lbl` since it is not accessible in the inner class.
 
 The one sample output:
