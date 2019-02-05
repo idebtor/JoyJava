@@ -70,10 +70,6 @@ public class CircleFX extends Application {
  * Then this class must override handle(ActionEvent e).
  */
 
-
-
-
-
 class CirclePane extends StackPane {
   private Circle circle = new Circle(50);
 
